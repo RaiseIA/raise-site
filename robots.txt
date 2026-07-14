@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://raise-thiagofonseca.netlify.app/sitemap.xml
