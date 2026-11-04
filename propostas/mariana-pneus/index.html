@@ -1,0 +1,862 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<style>:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Proposta Mariana Pneus</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head><body>
+<style>
+/* Layout: mesmo shell do You OS (sidebar marinho + topbar + cards), clássico: serifa nos títulos, vermelho só como acento */
+:root{
+  --bg:#F1F2F6; --surface:#FFFFFF; --surface-2:#F6F7FA; --surface-3:#E9EBF2;
+  --border:#E2E4EC; --border-strong:#CDD1DE;
+  --ink:#121633; --ink-muted:#4E536B; --ink-faint:#717690;
+  --brand:#0B1446; --brand-strong:#060C2E; --brand-tint:#E7E9F4;
+  --accent:#C20E1F; --accent-strong:#9A0A17; --accent-tint:#FBE6E8;
+  --gold:#9B7A3E; --gold-tint:#F3ECDD;
+  --ok:#1F7A4D; --ok-tint:#DFF1E7; --warn:#93600F; --warn-tint:#F5EAD3; --crit:#B3262C; --crit-tint:#F6DEDF;
+  --shadow-card:0 10px 26px rgba(6,12,46,.07),0 1px 2px rgba(6,12,46,.06);
+  --font-display:'Libre Caslon Text',Georgia,'Times New Roman',serif;
+  --font-body:'Plus Jakarta Sans',-apple-system,'Segoe UI',sans-serif;
+  --font-mono:'IBM Plex Mono','SF Mono',Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#080B1E; --surface:#111530; --surface-2:#171C3B; --surface-3:#1E2447;
+  --border:#272E55; --border-strong:#38406E;
+  --ink:#ECEEF8; --ink-muted:#AAB0CC; --ink-faint:#868DAD;
+  --brand:#16205E; --brand-strong:#0B1240; --brand-tint:#1D2552;
+  --accent:#F0505C; --accent-strong:#FF7F88; --accent-tint:#3A1519;
+  --gold:#D3B378; --gold-tint:#2E2716;
+  --ok:#55C990; --ok-tint:#123225; --warn:#E2AE5B; --warn-tint:#352812; --crit:#F27C80; --crit-tint:#3A1719;
+  --shadow-card:0 10px 26px rgba(0,0,0,.45); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#080B1E; --surface:#111530; --surface-2:#171C3B; --surface-3:#1E2447;
+  --border:#272E55; --border-strong:#38406E;
+  --ink:#ECEEF8; --ink-muted:#AAB0CC; --ink-faint:#868DAD;
+  --brand:#16205E; --brand-strong:#0B1240; --brand-tint:#1D2552;
+  --accent:#F0505C; --accent-strong:#FF7F88; --accent-tint:#3A1519;
+  --gold:#D3B378; --gold-tint:#2E2716;
+  --ok:#55C990; --ok-tint:#123225; --warn:#E2AE5B; --warn-tint:#352812; --crit:#F27C80; --crit-tint:#3A1719;
+  --shadow-card:0 10px 26px rgba(0,0,0,.45); color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased;margin:0}
+h1,h2,h3{font-family:var(--font-display);font-weight:700;text-wrap:balance;margin:0;color:var(--ink);letter-spacing:-.005em}
+p{margin:0}
+.mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+button{font-family:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition-duration:.001ms!important}}
+
+#app{display:flex;gap:18px;min-height:100vh;padding-block:18px;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px));align-items:flex-start}
+#sidebar{width:252px;flex:none;background:linear-gradient(200deg,#0E1A5A,#060C2E);color:#DDE1F3;display:flex;flex-direction:column;position:sticky;top:18px;min-height:calc(100vh - 36px);border-radius:26px;padding:20px 14px}
+.brand-block{display:flex;flex-direction:column;align-items:center;gap:10px;padding:2px 4px 18px;border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:6px}
+.logo-badge{background:#fff;border-radius:18px;padding:6px 10px;display:flex;align-items:center;justify-content:center}
+.logo-badge img{width:118px;height:auto;display:block}
+.brand-block .sys{font-family:var(--font-display);font-size:15px;color:#fff}
+.brand-block .sys i{color:#E8A0A6;font-style:italic}
+nav.sections{display:flex;flex-direction:column;gap:2px;flex:1}
+.nav-group-label{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#8E97C4;padding:14px 10px 6px;font-weight:700}
+.nav-btn{display:flex;align-items:center;gap:10px;text-align:left;padding:9px 12px;border-radius:13px;background:transparent;border:none;color:#CBD1EE;font-size:13.2px;font-weight:600;cursor:pointer;transition:background .12s,color .12s;text-decoration:none}
+.nav-btn:hover{background:rgba(255,255,255,.08);color:#fff}
+.nav-btn.active{background:#fff;color:#0B1446;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.nav-btn.active .dot{background:#C20E1F}
+.nav-btn .dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.28);flex:none}
+.sidebar-foot{font-size:11px;line-height:1.6;color:#8E97C4;margin-top:16px;border-top:1px solid rgba(255,255,255,.12);padding:14px 10px 2px}
+.sidebar-foot b{color:#fff;font-weight:700}
+
+#main{flex:1;min-width:0;display:flex;flex-direction:column;gap:16px}
+#topbar{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--ink-muted);flex-wrap:wrap}
+.breadcrumb b{color:var(--ink)}
+.breadcrumb .sep{color:var(--ink-faint)}
+.tb-meta{display:flex;gap:8px;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:6px;background:var(--surface-2);border:1px solid var(--border);border-radius:11px;padding:6px 11px;font-size:12px;font-weight:600;color:var(--ink-muted)}
+.chip b{color:var(--ink)}
+.navs{display:flex;gap:8px}
+.navs button{background:var(--surface-2);border:1px solid var(--border);border-radius:11px;padding:6px 12px;font-size:12px;font-weight:700;color:var(--ink);cursor:pointer}
+.navs button:hover{border-color:var(--border-strong)}
+.navs button:disabled{opacity:.4;cursor:default}
+
+#content{max-width:1320px;width:100%}
+.view{display:none;animation:fadein .2s ease}
+.view.active{display:block}
+@keyframes fadein{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
+.view-head{margin-bottom:18px;display:flex;flex-direction:column;gap:6px}
+.view-head h1{font-size:27px;line-height:1.2}
+.view-head p{color:var(--ink-muted);font-size:14px;max-width:72ch}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:800}
+
+.card{background:var(--surface);border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow-card);min-width:0}
+.card-pad{padding:20px 22px}
+.card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:18px 22px 0}
+.card-title{font-size:14px;font-weight:800;color:var(--ink)}
+.card-title .sub{display:block;font-weight:500;color:var(--ink-faint);font-size:12px;margin-top:2px}
+.card h3{font-size:17px;margin-bottom:6px}
+.card p.lead{color:var(--ink-muted);font-size:13.3px}
+.grid-2{display:grid;grid-template-columns:1.25fr 1fr;gap:16px;align-items:start}
+.grid-2e{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.stack{display:flex;flex-direction:column;gap:16px}
+.mt{margin-top:16px}
+
+.kpi{padding:16px 16px 15px;display:flex;flex-direction:column;gap:8px}
+.kpi .label{font-size:11.5px;color:var(--ink-muted);font-weight:700}
+.kpi .value{font-family:var(--font-mono);font-size:21px;font-weight:600;letter-spacing:-.01em}
+.kpi .delta{font-size:11.5px;font-weight:700}
+.up{color:var(--ok)} .down{color:var(--crit)}
+
+.ilustr{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);background:var(--gold-tint);border-radius:100px;padding:3px 9px;white-space:nowrap}
+
+.pill{display:inline-flex;align-items:center;gap:5px;padding:3px 10px 3px 8px;border-radius:100px;font-size:10.5px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;white-space:nowrap}
+.pill::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.pill.ok{background:var(--ok-tint);color:var(--ok)} .pill.warn{background:var(--warn-tint);color:var(--warn)} .pill.crit{background:var(--crit-tint);color:var(--crit)} .pill.brand{background:var(--brand-tint);color:var(--brand)}
+:root[data-theme="dark"] .pill.brand{color:#C3CAF2}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .pill.brand{color:#C3CAF2}}
+
+ul.checks{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column;gap:9px}
+ul.checks li{display:grid;grid-template-columns:18px 1fr;gap:8px;font-size:13.2px;color:var(--ink)}
+ul.checks li::before{content:"";width:14px;height:14px;margin-top:3px;border-radius:4px;background:var(--accent-tint);box-shadow:inset 0 0 0 1.5px var(--accent)}
+ul.checks li span{color:var(--ink-muted)}
+
+.module{display:flex;flex-direction:column;gap:10px}
+.module .tag{align-self:flex-start}
+.mod-ico{width:36px;height:36px;border-radius:11px;background:var(--brand-tint);color:var(--brand);display:flex;align-items:center;justify-content:center;flex:none}
+:root[data-theme="dark"] .mod-ico{color:#C3CAF2}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .mod-ico{color:#C3CAF2}}
+.mod-top{display:flex;gap:12px;align-items:center}
+.mod-top h3{margin:0;font-size:16.5px}
+
+table.data{width:100%;border-collapse:collapse;font-size:12.8px}
+table.data th{text-align:left;font-size:10.8px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-faint);font-weight:800;padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
+table.data td{padding:11px 14px;border-bottom:1px solid var(--border);vertical-align:top}
+table.data tr:last-child td{border-bottom:none}
+table.data td.num,table.data th.num{font-family:var(--font-mono);text-align:right;white-space:nowrap}
+table.data td.when{font-family:var(--font-mono);font-weight:600;white-space:nowrap;color:var(--brand)}
+:root[data-theme="dark"] table.data td.when{color:#C3CAF2}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) table.data td.when{color:#C3CAF2}}
+.table-scroll{overflow-x:auto}
+
+/* Fluxo */
+.flow{display:flex;gap:10px;flex-wrap:wrap;align-items:stretch}
+.flow .st{flex:1 1 140px;background:var(--surface-2);border:1px solid var(--border);border-radius:14px;padding:12px 13px;position:relative;min-width:0}
+.flow .st b{display:block;font-size:13px;margin-bottom:3px}
+.flow .st span{font-size:12px;color:var(--ink-muted);display:block}
+.flow .st .k{font-family:var(--font-mono);font-size:10.5px;color:var(--accent);font-weight:600;letter-spacing:.04em;margin-bottom:4px;display:block}
+.flow .st.hl{background:var(--brand);border-color:var(--brand);color:#fff}
+.flow .st.hl b{color:#fff} .flow .st.hl span{color:#C9CFEE} .flow .st.hl .k{color:#F4A7AE}
+
+/* Chat */
+.phone{background:var(--surface-2);border:1px solid var(--border);border-radius:22px;padding:14px;display:flex;flex-direction:column;gap:8px;max-width:420px}
+.phone .ph-head{display:flex;align-items:center;gap:10px;padding:2px 2px 10px;border-bottom:1px solid var(--border)}
+.av{width:34px;height:34px;border-radius:50%;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;flex:none}
+.ph-head b{font-size:13px;display:block}
+.ph-head span{font-size:11px;color:var(--ok);font-weight:700}
+.msg{max-width:84%;padding:8px 11px;border-radius:14px;font-size:12.8px;line-height:1.45}
+.msg.in{background:var(--surface);border:1px solid var(--border);align-self:flex-start;border-bottom-left-radius:4px}
+.msg.out{background:var(--brand-tint);align-self:flex-end;border-bottom-right-radius:4px;color:var(--ink)}
+.msg .t{display:block;font-size:10px;color:var(--ink-faint);margin-top:3px;text-align:right;font-family:var(--font-mono)}
+.prod{display:grid;grid-template-columns:44px 1fr auto;gap:10px;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:8px 10px;margin-top:6px}
+.tire{width:44px;height:44px;border-radius:50%;background:radial-gradient(circle,var(--surface-3) 0 30%,#2B2F45 31% 62%,#14172A 63%);}
+.prod b{font-size:12.3px;display:block}
+.prod span{font-size:11px;color:var(--ink-muted)}
+.prod .pr{font-family:var(--font-mono);font-weight:600;font-size:12.5px}
+.sys-note{align-self:center;font-size:11px;color:var(--gold);background:var(--gold-tint);border-radius:100px;padding:4px 10px;font-weight:700;text-align:center}
+
+/* Kanban */
+.kanban{display:grid;grid-template-columns:repeat(5,minmax(170px,1fr));gap:12px;overflow-x:auto;padding-bottom:4px}
+.col{background:var(--surface-2);border:1px solid var(--border);border-radius:16px;padding:10px;display:flex;flex-direction:column;gap:8px;min-width:170px}
+.col-h{display:flex;justify-content:space-between;align-items:center;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-muted);padding:2px 4px}
+.col-h .n{font-family:var(--font-mono);color:var(--ink)}
+.lc{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:5px}
+.lc .top{display:flex;justify-content:space-between;gap:6px;font-size:12.5px;font-weight:700}
+.lc .top .v{font-family:var(--font-mono);font-weight:600}
+.lc .it{font-size:11.3px;color:var(--ink-muted)}
+.lc .nx{font-size:11px;font-weight:700;background:var(--surface-2);border-radius:8px;padding:4px 7px;color:var(--ink-muted)}
+.lc .nx.ia{background:var(--brand-tint);color:var(--brand)}
+:root[data-theme="dark"] .lc .nx.ia{color:#C3CAF2}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .lc .nx.ia{color:#C3CAF2}}
+.lc .nx.late{background:var(--crit-tint);color:var(--crit)}
+
+/* Barras */
+.bars{display:flex;flex-direction:column;gap:12px}
+.bar-row{display:grid;grid-template-columns:120px 1fr 64px;gap:10px;align-items:center;font-size:12.5px}
+.bar-row .lbl{color:var(--ink-muted);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.track{height:10px;background:var(--surface-3);border-radius:6px;position:relative;overflow:visible}
+.fill{height:100%;border-radius:6px;background:var(--brand)}
+.fill.proj{background:repeating-linear-gradient(90deg,var(--brand) 0 4px,transparent 4px 7px);opacity:.45;position:absolute;top:0;left:0}
+.tick{position:absolute;top:-4px;width:2px;height:18px;background:var(--accent);border-radius:1px}
+.tick.super{background:var(--gold)}
+.bar-row .pct{font-family:var(--font-mono);font-weight:600;text-align:right}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:11.5px;color:var(--ink-muted);margin-top:12px}
+.legend i{display:inline-block;width:12px;height:8px;border-radius:2px;margin-right:5px;vertical-align:middle}
+
+.rank{display:flex;flex-direction:column}
+.rank .r{display:grid;grid-template-columns:22px 1fr auto auto;gap:10px;align-items:center;padding:10px 22px;border-top:1px solid var(--border);font-size:13px}
+.rank .r:first-child{border-top:none}
+.rank .pos{font-family:var(--font-mono);color:var(--ink-faint);font-size:12px}
+.rank .nm{font-weight:700}
+.rank .nm small{display:block;font-weight:500;color:var(--ink-faint);font-size:11px}
+.rank .v{font-family:var(--font-mono);font-weight:600}
+
+/* App vendedor */
+.mobile{width:250px;max-width:100%;background:var(--brand-strong);border-radius:30px;padding:10px;box-shadow:var(--shadow-card);margin-inline:auto}
+.mobile .scr{background:var(--surface);border-radius:22px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.mobile .hello{font-family:var(--font-display);font-size:16px}
+.ring{width:118px;height:118px;margin:4px auto;position:relative}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring .c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.ring .c b{font-family:var(--font-mono);font-size:22px}
+.ring .c span{font-size:10.5px;color:var(--ink-faint)}
+.notif{border-radius:12px;padding:9px 10px;font-size:11.5px;line-height:1.4}
+.notif.ok{background:var(--ok-tint);color:var(--ok)}
+.notif.up{background:var(--gold-tint);color:var(--gold)}
+.notif b{display:block;font-size:11.8px}
+
+.alert-item{display:grid;grid-template-columns:auto 1fr;gap:12px;padding:12px 22px;border-top:1px solid var(--border);align-items:start}
+.alert-item:first-child{border-top:none}
+.alert-item b{display:block;font-size:13px}
+.alert-item span{font-size:12px;color:var(--ink-muted)}
+
+/* Roadmap */
+.phase{display:flex;flex-direction:column;gap:10px}
+.phase .when{font-family:var(--font-mono);font-size:11.5px;color:var(--accent);font-weight:600;letter-spacing:.04em}
+.phase h3{font-size:18px}
+
+.quote{font-family:var(--font-display);font-style:italic;font-size:19px;line-height:1.45;color:var(--ink)}
+.hero{background:linear-gradient(135deg,#0E1A5A 0%,#060C2E 75%);color:#fff;border:none;overflow:hidden;position:relative}
+.hero .card-pad{padding:28px 30px;display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:center}
+.hero h1{color:#fff;font-size:32px;line-height:1.15}
+.hero h1 em{color:#F4A7AE;font-style:italic;font-weight:400}
+.hero p{color:#C9CFEE;font-size:14.3px;margin-top:12px;max-width:60ch}
+.hero .eyebrow{color:#F4A7AE}
+.hero-list{display:flex;flex-direction:column;gap:10px;border-left:1px solid rgba(255,255,255,.18);padding-left:22px}
+.hero-list div{display:flex;flex-direction:column}
+.hero-list b{font-family:var(--font-mono);font-size:12px;color:#F4A7AE;font-weight:600;letter-spacing:.05em}
+.hero-list span{font-size:13.5px;color:#fff;font-weight:600}
+.hero::after{content:"";position:absolute;right:-60px;bottom:-60px;width:220px;height:220px;border-radius:50%;border:26px solid rgba(255,255,255,.04);box-shadow:0 0 0 22px rgba(255,255,255,.025)}
+
+.price{font-family:var(--font-mono);font-size:24px;font-weight:600;color:var(--ink)}
+.price small{font-size:12px;color:var(--ink-faint);font-family:var(--font-body);font-weight:600}
+.fill-in{border-bottom:1.5px dashed var(--border-strong);padding:0 4px;color:var(--ink-faint)}
+.foot-note{font-size:11.8px;color:var(--ink-faint);margin-top:10px}
+.divider{height:1px;background:var(--border);margin:14px 0}
+
+@media (max-width:1100px){.grid-4{grid-template-columns:repeat(2,1fr)}.grid-3{grid-template-columns:1fr 1fr}.grid-2,.grid-2e{grid-template-columns:1fr}.hero .card-pad{grid-template-columns:1fr}}
+@media (max-width:860px){
+  #app{flex-direction:column;padding-block:12px}
+  #sidebar{width:100%;min-height:auto;position:relative;top:0;border-radius:20px;padding:14px}
+  .brand-block{flex-direction:row;justify-content:flex-start;border-bottom:none;padding:0 0 8px;margin:0}
+  .logo-badge img{width:84px}
+  nav.sections{flex-direction:row;flex-wrap:nowrap;overflow-x:auto;gap:4px;padding-bottom:4px}
+  .nav-group-label,.sidebar-foot{display:none}
+  .nav-btn{white-space:nowrap;flex:none}
+  .grid-3,.grid-4{grid-template-columns:1fr}
+  .hero h1{font-size:25px}
+  .hero .card-pad{padding:22px}
+  .hero-list{border-left:none;padding-left:0;border-top:1px solid rgba(255,255,255,.18);padding-top:16px}
+  .view-head h1{font-size:23px}
+  .bar-row{grid-template-columns:92px 1fr 52px}
+}
+</style>
+
+<div id="app">
+  <aside id="sidebar">
+    <div class="brand-block">
+      <div class="logo-badge"><img src="data:image/jpeg;base64,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" alt="Mariana Pneus"></div>
+      <div class="sys">Mariana <i>OS</i></div>
+    </div>
+    <nav class="sections" id="nav">
+      <div class="nav-group-label">Proposta</div>
+      <a class="nav-btn" href="#visao-geral" data-v="visao-geral"><span class="dot"></span>Visão geral</a>
+      <a class="nav-btn" href="#diagnostico" data-v="diagnostico"><span class="dot"></span>Diagnóstico</a>
+      <div class="nav-group-label">Frentes de trabalho</div>
+      <a class="nav-btn" href="#marketing" data-v="marketing"><span class="dot"></span>Marketing e tráfego</a>
+      <a class="nav-btn" href="#atendimento" data-v="atendimento"><span class="dot"></span>Atendimento com IA</a>
+      <a class="nav-btn" href="#comercial" data-v="comercial"><span class="dot"></span>Comercial e CRM</a>
+      <a class="nav-btn" href="#pos-vendas" data-v="pos-vendas"><span class="dot"></span>Pós-venda e reativação</a>
+      <a class="nav-btn" href="#time" data-v="time"><span class="dot"></span>Gestão do time</a>
+      <a class="nav-btn" href="#financeiro" data-v="financeiro"><span class="dot"></span>Financeiro</a>
+      <div class="nav-group-label">Execução</div>
+      <a class="nav-btn" href="#arquitetura" data-v="arquitetura"><span class="dot"></span>Arquitetura</a>
+      <a class="nav-btn" href="#roadmap" data-v="roadmap"><span class="dot"></span>Roadmap de 90 dias</a>
+      <a class="nav-btn" href="#investimento" data-v="investimento"><span class="dot"></span>Investimento</a>
+    </nav>
+    <div class="sidebar-foot"><b>RAISE</b> · Growth, Revenue &amp; IA<br>Thiago Fonseca · Advisor estratégico<br>Proposta de 31/10/2026</div>
+  </aside>
+
+  <div id="main">
+    <div id="topbar">
+      <div class="breadcrumb"><span>Proposta RAISE</span><span class="sep">/</span><span>Mariana Pneus</span><span class="sep">/</span><b id="crumb">Visão geral</b></div>
+      <div class="tb-meta">
+        <span class="chip">2 lojas · <b>Mariana/MG</b></span>
+        <span class="chip">Consultoria de <b>Growth com IA</b></span>
+        <div class="navs"><button id="prev" type="button">‹ Anterior</button><button id="next" type="button">Próxima ›</button></div>
+      </div>
+    </div>
+
+    <main id="content">
+
+<!-- ================= VISÃO GERAL ================= -->
+<section class="view" id="v-visao-geral">
+  <div class="card hero"><div class="card-pad">
+    <div>
+      <div class="eyebrow">Proposta de consultoria · Growth com IA</div>
+      <h1>Uma operação comercial que <em>atende, vende e chama o cliente de volta</em> sozinha, e um gestor que enxerga tudo.</h1>
+      <p>A Mariana Pneus tem demanda, duas lojas e 14 anos de marca. O que limita o faturamento hoje é o que acontece depois que o cliente chama no WhatsApp: tempo de resposta, falta de acompanhamento, ausência de metas claras e nenhum processo para trazer o cliente de volta na próxima troca de óleo. Esta proposta une estratégia comercial e um sistema próprio de IA para resolver esses quatro pontos de uma vez.</p>
+    </div>
+    <div class="hero-list">
+      <div><b>ESTRATÉGIA</b><span>Marketing, comercial e pós-venda desenhados para o varejo automotivo</span></div>
+      <div><b>PLATAFORMA</b><span>Mariana OS: atendimento com IA, CRM, metas, cobrança e tráfego em um só lugar</span></div>
+      <div><b>GOVERNANÇA</b><span>Rituais mensais de advisory com leitura de números e plano de ação</span></div>
+    </div>
+  </div></div>
+
+  <div class="grid-4 mt">
+    <div class="card kpi"><span class="label">Resposta ao primeiro contato</span><span class="value">&lt; 1 min</span><span class="delta up">24 horas, 7 dias, nas duas lojas</span></div>
+    <div class="card kpi"><span class="label">Leads sem retorno</span><span class="value">0</span><span class="delta up">Todo lead entra no CRM com dono e próxima ação</span></div>
+    <div class="card kpi"><span class="label">Clientes chamados de volta</span><span class="value">100%</span><span class="delta up">Lembrete automático de revisão e troca</span></div>
+    <div class="card kpi"><span class="label">Visão de meta</span><span class="value">Diária</span><span class="delta up">Por empresa, loja, vendedor e serviço</span></div>
+  </div>
+
+  <div class="card mt">
+    <div class="card-head"><div class="card-title">O ciclo completo de receita<span class="sub">Cada etapa alimenta a seguinte. É isso que transforma ação isolada em crescimento previsível.</span></div></div>
+    <div class="card-pad">
+      <div class="flow">
+        <div class="st"><span class="k">01 · ATRAIR</span><b>Tráfego e inteligência de anúncios</b><span>Campanhas no Meta com copy validada contra o mercado</span></div>
+        <div class="st"><span class="k">02 · ATENDER</span><b>IA no WhatsApp</b><span>Qualifica, envia foto, preço e catálogo atualizado</span></div>
+        <div class="st hl"><span class="k">03 · VENDER</span><b>CRM por vendedor</b><span>Rodízio, funil individual e follow-up automático</span></div>
+        <div class="st"><span class="k">04 · RETER</span><b>Pós-venda</b><span>Agradecimento, avaliação no Google e lembrete de manutenção</span></div>
+        <div class="st"><span class="k">05 · REATIVAR</span><b>Base inativa</b><span>Mensagens periódicas para quem sumiu</span></div>
+        <div class="st"><span class="k">06 · RECEBER</span><b>Cobrança</b><span>Boleto e régua de cobrança pelo WhatsApp</span></div>
+      </div>
+      <p class="foot-note">A gestão do time de vendas (metas, ranking, previsão e app do vendedor) acompanha o ciclo inteiro.</p>
+    </div>
+  </div>
+
+  <div class="grid-2 mt">
+    <div class="card card-pad">
+      <h3>Por que consultoria, e não só ferramenta</h3>
+      <p class="lead">Ferramenta sem método vira mais um sistema que ninguém usa. A entrega começa pela estratégia: quem é o cliente de cada loja, quais serviços puxam margem, qual a meta realista e como o vendedor deve abordar. A plataforma é a forma de colocar essa estratégia para rodar todos os dias, com IA fazendo o trabalho repetitivo e o time focado em fechar.</p>
+      <ul class="checks">
+        <li>Plano comercial, de marketing e de pós-venda escrito para a Mariana Pneus</li>
+        <li>Sistema próprio, sem cobrança por usuário, configurado para as duas lojas</li>
+        <li>Acompanhamento mensal com leitura de resultado e correção de rota</li>
+      </ul>
+    </div>
+    <div class="card card-pad">
+      <h3>O que muda no dia a dia</h3>
+      <ul class="checks">
+        <li>O dono abre o celular e vê a meta do mês, a projeção e quem está abaixo do esperado</li>
+        <li>O vendedor recebe o lead já qualificado, com veículo, medida e serviço</li>
+        <li>Nenhum orçamento fica sem retorno: a IA cobra a resposta no tempo certo</li>
+        <li>O cliente da troca de óleo é lembrado na data certa, sem ninguém anotar</li>
+        <li>Boletos saem e são cobrados sem o financeiro ligar para ninguém</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DIAGNÓSTICO ================= -->
+<section class="view" id="v-diagnostico">
+  <div class="view-head"><div class="eyebrow">Diagnóstico</div><h1>Onde o faturamento está escapando</h1><p>Leitura inicial a partir da conversa com a gestão. Na primeira semana do projeto, cada ponto é medido com os dados reais das duas lojas para fixar a linha de base e as metas.</p></div>
+  <div class="card">
+    <div class="table-scroll"><table class="data">
+      <thead><tr><th>Área</th><th>Sintoma relatado</th><th>Impacto no resultado</th><th>Resposta da proposta</th></tr></thead>
+      <tbody>
+        <tr><td><span class="pill crit">Atendimento</span></td><td>Demora para responder e conversas que ficam sem retorno</td><td>Cliente de pneu e serviço decide rápido: quem responde primeiro leva a venda</td><td>IA no WhatsApp 24h, com catálogo, preço e foto, e passagem para o vendedor</td></tr>
+        <tr><td><span class="pill crit">Comercial</span></td><td>Sem funil, sem follow-up, sem visão por vendedor</td><td>Orçamentos esfriam; o gestor não sabe onde o negócio parou</td><td>CRM com funil por vendedor, rodízio e follow-up automático</td></tr>
+        <tr><td><span class="pill warn">Gestão</span></td><td>Metas pouco claras e acompanhadas no fim do mês</td><td>Correção tardia; o mês já foi perdido quando o número aparece</td><td>Metas por loja, vendedor e serviço, previsão diária e alertas</td></tr>
+        <tr><td><span class="pill warn">Pós-venda</span></td><td>Cliente só volta se lembrar sozinho</td><td>Recorrência natural do setor (óleo, alinhamento, rodízio) não é aproveitada</td><td>Lembretes por quilometragem e prazo, avaliação no Google e ofertas</td></tr>
+        <tr><td><span class="pill warn">Marketing</span></td><td>Anúncios sem leitura de custo por venda</td><td>Verba sem relação clara com faturamento</td><td>Painel de tráfego cruzado com vendas e inteligência de anúncios</td></tr>
+        <tr><td><span class="pill brand">Financeiro</span></td><td>Cobrança manual de boletos</td><td>Atraso no recebimento e tempo da equipe gasto em ligação</td><td>Envio de boleto e régua de cobrança automática pelo WhatsApp</td></tr>
+        <tr><td><span class="pill brand">Sistemas</span></td><td>Sistema de vendas sem integração aberta (API)</td><td>Catálogo e preços não chegam aos canais digitais</td><td>Agente que lê o sistema todos os dias e atualiza o catálogo</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <div class="grid-2e mt">
+    <div class="card card-pad">
+      <h3>A tese</h3>
+      <p class="quote">"Loja de pneus vende no primeiro atendimento e lucra na volta do cliente."</p>
+      <p class="lead mt">O pneu atrai; o serviço recorrente sustenta a margem. A operação vai ser desenhada para ganhar a primeira venda pela velocidade e transformar cada cliente em um calendário de manutenção.</p>
+    </div>
+    <div class="card card-pad">
+      <h3>O que vamos medir na semana 1</h3>
+      <ul class="checks">
+        <li>Volume de contatos por canal e por loja</li>
+        <li>Tempo médio de primeira resposta e taxa de conversas sem retorno</li>
+        <li>Conversão de contato em venda e ticket médio por vendedor</li>
+        <li>Mix de vendas: pneus, peças e serviços</li>
+        <li>Percentual de clientes que voltam em 6 e 12 meses</li>
+        <li>Inadimplência e prazo médio de recebimento</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MARKETING ================= -->
+<section class="view" id="v-marketing">
+  <div class="view-head"><div class="eyebrow">Frente 1 · Marketing e tráfego</div><h1>Investir em anúncio sabendo quanto ele vende</h1><p>Estratégia de mídia por loja e por categoria (pneus, serviços, peças), com três ferramentas que tiram o achismo da verba.</p></div>
+  <div class="grid-3">
+    <div class="card card-pad module">
+      <div class="mod-top"><div class="mod-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div><h3>Painel de tráfego</h3></div>
+      <p class="lead">No mesmo formato do painel já entregue para a You: investimento, contatos, custo por contato, vendas e retorno por campanha e por anúncio, separado por loja.</p>
+      <ul class="checks"><li>Gasto cruzado com vendas do CRM, não só com cliques</li><li>Comparação entre as duas lojas</li><li>Leitura semanal com recomendação de verba</li></ul>
+    </div>
+    <div class="card card-pad module">
+      <div class="mod-top"><div class="mod-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6 1-4.5 4 1 6-5.5-3-5.5 3 1-6L3 9l6-1z"/></svg></div><h3>Agente de campanhas</h3></div>
+      <p class="lead">Agente que monta e sobe campanhas no gerenciador de anúncios do Meta a partir de um briefing simples ("promoção de alinhamento na loja 2, R$ 30 por dia, 7 dias").</p>
+      <ul class="checks"><li>Estrutura, público e criativo prontos para aprovação</li><li>Nada é publicado sem o aprovar da gestão</li><li>Pausa automática de anúncio com custo acima do limite</li></ul>
+    </div>
+    <div class="card card-pad module">
+      <div class="mod-top"><div class="mod-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div><h3>Inteligência de anúncios</h3></div>
+      <p class="lead">Plataforma para estudar concorrentes e o mercado: quais anúncios estão no ar, há quanto tempo rodam, que oferta usam. A partir disso, a IA escreve a copy da Mariana Pneus.</p>
+      <ul class="checks"><li>Monitoramento da Biblioteca de Anúncios do Meta</li><li>Anúncio que roda há mais tempo vira referência validada</li><li>Copy com o tom da marca, pronta para teste A/B</li></ul>
+    </div>
+  </div>
+
+  <div class="grid-2 mt">
+    <div class="card">
+      <div class="card-head"><div class="card-title">Prévia · Painel de tráfego<span class="sub">Últimos 30 dias, por loja</span></div><span class="ilustr">Dados ilustrativos</span></div>
+      <div class="card-pad">
+        <div class="grid-4" style="gap:10px">
+          <div class="kpi" style="padding:0"><span class="label">Investimento</span><span class="value" style="font-size:18px">R$ 2.840</span></div>
+          <div class="kpi" style="padding:0"><span class="label">Contatos no WhatsApp</span><span class="value" style="font-size:18px">412</span></div>
+          <div class="kpi" style="padding:0"><span class="label">Custo por contato</span><span class="value" style="font-size:18px">R$ 6,89</span></div>
+          <div class="kpi" style="padding:0"><span class="label">Retorno sobre mídia</span><span class="value" style="font-size:18px">11,4x</span></div>
+        </div>
+        <div class="divider"></div>
+        <div class="table-scroll"><table class="data">
+          <thead><tr><th>Campanha</th><th>Loja</th><th class="num">Contatos</th><th class="num">Vendas</th><th class="num">Custo/venda</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Pneu aro 14 · parcelado</td><td>Loja 1</td><td class="num">138</td><td class="num">31</td><td class="num">R$ 29</td><td><span class="pill ok">Escalar</span></td></tr>
+            <tr><td>Alinhamento + balanceamento</td><td>Loja 2</td><td class="num">96</td><td class="num">27</td><td class="num">R$ 22</td><td><span class="pill ok">Escalar</span></td></tr>
+            <tr><td>Troca de óleo expressa</td><td>Loja 1</td><td class="num">104</td><td class="num">18</td><td class="num">R$ 41</td><td><span class="pill warn">Ajustar</span></td></tr>
+            <tr><td>Freios · revisão</td><td>Loja 2</td><td class="num">74</td><td class="num">6</td><td class="num">R$ 98</td><td><span class="pill crit">Pausar</span></td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+    <div class="card card-pad">
+      <h3>Catálogo sempre atualizado</h3>
+      <p class="lead">O sistema de vendas atual não tem integração aberta. Em vez de esperar, criamos um agente que entra no sistema todos os dias, lê produtos, preços e estoque de cada loja e atualiza o catálogo usado pela IA, pelo WhatsApp e pelos anúncios.</p>
+      <div class="flow mt" style="flex-direction:column">
+        <div class="st"><span class="k">06:00 · LEITURA</span><b>Agente acessa o sistema de vendas</b><span>Exporta o relatório de produtos e estoque das duas lojas</span></div>
+        <div class="st"><span class="k">06:10 · PADRONIZAÇÃO</span><b>Medida, marca, modelo, preço e estoque</b><span>Ex.: 175/70 R14, aro, índice de carga, loja</span></div>
+        <div class="st hl"><span class="k">06:15 · PUBLICAÇÃO</span><b>Catálogo da IA, do WhatsApp e dos anúncios</b><span>Item sem estoque sai da oferta automaticamente</span></div>
+      </div>
+      <p class="foot-note">Se a leitura falhar, a gestão recebe um aviso e a IA passa a confirmar preço com o vendedor até a próxima atualização. Quando o sistema ganhar API, o agente é substituído pela integração direta.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ATENDIMENTO ================= -->
+<section class="view" id="v-atendimento">
+  <div class="view-head"><div class="eyebrow">Frente 2 · Atendimento com IA</div><h1>Todo cliente respondido em segundos, com o preço certo</h1><p>Plataforma de atendimento no WhatsApp oficial, no mesmo modelo já em produção na Clínica Feminine e na You: a IA atende, qualifica e entrega o cliente pronto para o vendedor fechar.</p></div>
+  <div class="grid-2">
+    <div class="stack">
+      <div class="card card-pad">
+        <h3>O que a IA faz</h3>
+        <ul class="checks">
+          <li>Responde 24h no WhatsApp oficial da empresa, nas duas lojas</li>
+          <li>Qualifica: veículo, ano, medida do pneu, serviço desejado, urgência e loja mais próxima</li>
+          <li>Envia foto do produto, preço, condição de pagamento e o catálogo atualizado</li>
+          <li>Registra tudo no CRM: origem, interesse, valor e etapa</li>
+          <li>Passa para o vendedor no momento do fechamento, por rodízio</li>
+          <li>Retoma a conversa quando o cliente para de responder</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-head"><div class="card-title">Rodízio de vendedores<span class="sub">Distribuição justa e controlada pela gestão</span></div></div>
+        <div class="table-scroll"><table class="data">
+          <thead><tr><th>Regra</th><th>Como funciona</th></tr></thead>
+          <tbody>
+            <tr><td><b>Por loja</b></td><td>O lead vai para os vendedores da loja escolhida pelo cliente ou da mais próxima</td></tr>
+            <tr><td><b>Sequência</b></td><td>Cada novo lead vai para o próximo da fila; quem está de folga ou fora do horário é pulado</td></tr>
+            <tr><td><b>Peso</b></td><td>A gestão pode dar mais leads a quem converte mais ou a um vendedor em treinamento</td></tr>
+            <tr><td><b>Prazo de aceite</b></td><td>Se o vendedor não assumir em 5 minutos, o lead passa para o próximo</td></tr>
+            <tr><td><b>Cliente antigo</b></td><td>Volta para o vendedor que fez a última venda</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+    <div class="card card-pad">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap"><div class="card-title">Prévia · conversa real de atendimento</div><span class="ilustr">Exemplo</span></div>
+      <div class="phone">
+        <div class="ph-head"><div class="av">MP</div><div><b>Mariana Pneus</b><span>online</span></div></div>
+        <div class="msg in">Boa tarde, tem pneu pro Onix 2019? Quanto fica?<span class="t">14:02</span></div>
+        <div class="msg out">Boa tarde! Aqui é da Mariana Pneus. Temos sim. O Onix 2019 usa a medida 185/65 R15. Você prefere uma opção mais econômica ou de linha premium?<span class="t">14:02</span></div>
+        <div class="msg in">Quero ver as duas<span class="t">14:03</span></div>
+        <div class="msg out">Separei duas opções com estoque hoje:
+          <div class="prod"><div class="tire"></div><div><b>Linha econômica 185/65 R15</b><span>Garantia de fábrica</span></div><span class="pr">R$ 389</span></div>
+          <div class="prod"><div class="tire"></div><div><b>Linha premium 185/65 R15</b><span>Mais durabilidade</span></div><span class="pr">R$ 529</span></div>
+          A instalação com alinhamento sai junto. É para a loja do Centro ou do bairro?<span class="t">14:03</span></div>
+        <div class="msg in">Centro. Consigo fazer amanhã cedo?<span class="t">14:05</span></div>
+        <div class="sys-note">Lead qualificado · enviado ao vendedor Rafael (rodízio Loja 1)</div>
+        <div class="msg out">Perfeito! O Rafael, da loja do Centro, vai confirmar seu horário de amanhã em instantes.<span class="t">14:05</span></div>
+      </div>
+      <p class="foot-note">Preços e medidas do exemplo são ilustrativos. A IA só informa valores vindos do catálogo atualizado e nunca promete o que não está nele.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COMERCIAL ================= -->
+<section class="view" id="v-comercial">
+  <div class="view-head"><div class="eyebrow">Frente 3 · Comercial e CRM</div><h1>Cada vendedor com o seu funil, e nenhum orçamento esquecido</h1><p>CRM próprio, sem mensalidade por usuário, com etapas automáticas e uma regra simples: o lead sempre tem um responsável e uma próxima ação.</p></div>
+  <div class="card">
+    <div class="card-head"><div class="card-title">Prévia · Funil do vendedor Rafael<span class="sub">Loja 1 · cada vendedor vê o seu; a gestão vê todos</span></div><span class="ilustr">Dados ilustrativos</span></div>
+    <div class="card-pad">
+      <div class="kanban">
+        <div class="col"><div class="col-h">Recebido <span class="n">4</span></div>
+          <div class="lc"><div class="top">Juliana M.<span class="v">R$ 918</span></div><div class="it">2 pneus 185/65 R15 · Onix</div><div class="nx">Confirmar horário · hoje 15h</div></div>
+          <div class="lc"><div class="top">Pedro A.<span class="v">R$ 180</span></div><div class="it">Alinhamento e balanceamento</div><div class="nx">Ligar · hoje 16h</div></div>
+        </div>
+        <div class="col"><div class="col-h">Orçamento enviado <span class="n">6</span></div>
+          <div class="lc"><div class="top">Marcos T.<span class="v">R$ 2.140</span></div><div class="it">4 pneus aro 17 · Compass</div><div class="nx late">Retorno atrasado 1h</div></div>
+          <div class="lc"><div class="top">Sandra L.<span class="v">R$ 640</span></div><div class="it">Pastilha + disco dianteiro</div><div class="nx">Cobrar decisão · amanhã 9h</div></div>
+        </div>
+        <div class="col"><div class="col-h">Negociação <span class="n">3</span></div>
+          <div class="lc"><div class="top">Transportes R. <span class="v">R$ 7.800</span></div><div class="it">Frota · 12 pneus carga</div><div class="nx">Enviar proposta · hoje</div></div>
+        </div>
+        <div class="col"><div class="col-h">Agendado <span class="n">5</span></div>
+          <div class="lc"><div class="top">Lucas F.<span class="v">R$ 260</span></div><div class="it">Troca de óleo + filtro</div><div class="nx">Amanhã 8h30 · Loja 1</div></div>
+        </div>
+        <div class="col"><div class="col-h">Com a IA <span class="n">9</span></div>
+          <div class="lc"><div class="top">Renato C.<span class="v">R$ 1.060</span></div><div class="it">Não fechou: "vou ver o preço"</div><div class="nx ia">IA retoma em 2 dias</div></div>
+          <div class="lc"><div class="top">Ana P.<span class="v">R$ 390</span></div><div class="it">Pediu retorno em dezembro</div><div class="nx ia">IA retoma 05/12</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="grid-3 mt">
+    <div class="card card-pad">
+      <h3>Etapas automáticas</h3>
+      <p class="lead">A etapa muda sozinha conforme a conversa: orçamento enviado, horário marcado, pagamento confirmado. O vendedor só move o card quando algo acontece fora do WhatsApp.</p>
+    </div>
+    <div class="card card-pad">
+      <h3>Devolver para a IA</h3>
+      <p class="lead">Se o cliente não fechou ou pediu para falar depois, o vendedor devolve o lead com um clique e escolhe o motivo. A IA assume o follow-up na data certa e, se o cliente reagir, o lead volta para o mesmo vendedor.</p>
+    </div>
+    <div class="card card-pad">
+      <h3>Follow-up com cadência</h3>
+      <p class="lead">Quatro tentativas em 10 dias, em horários diferentes, entre 8h e 20h. Sem resposta, o lead vai para Perdido com motivo e entra na base de reativação.</p>
+    </div>
+  </div>
+  <div class="card mt">
+    <div class="card-head"><div class="card-title">Motivos de perda em lista fechada<span class="sub">Ninguém marca "perdido" sem dizer por quê. É isso que alimenta a estratégia.</span></div></div>
+    <div class="card-pad" style="display:flex;gap:8px;flex-wrap:wrap">
+      <span class="pill warn">Preço</span><span class="pill warn">Sem estoque</span><span class="pill warn">Comprou em outro lugar</span><span class="pill warn">Distância</span><span class="pill warn">Sem resposta</span><span class="pill warn">Só pesquisando</span><span class="pill warn">Prazo de entrega</span><span class="pill warn">Pediu para sair</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PÓS-VENDA ================= -->
+<section class="view" id="v-pos-vendas">
+  <div class="view-head"><div class="eyebrow">Frente 4 · Pós-venda e reativação</div><h1>Transformar cada venda em um calendário de manutenção</h1><p>O carro avisa quando precisa voltar à loja. O sistema registra o que foi feito, calcula a próxima data e chama o cliente no momento certo.</p></div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><div class="card-title">Régua de pós-venda<span class="sub">Prazos padrão do setor; a gestão ajusta cada um</span></div></div>
+      <div class="table-scroll"><table class="data">
+        <thead><tr><th>Quando</th><th>Mensagem</th><th>Objetivo</th></tr></thead>
+        <tbody>
+          <tr><td class="when">D+1</td><td>Agradecimento pela confiança e pedido de avaliação no Google</td><td>Reputação local</td></tr>
+          <tr><td class="when">D+7</td><td>"Como está o carro?" com canal direto para qualquer ajuste</td><td>Satisfação</td></tr>
+          <tr><td class="when">D+15</td><td>Oferta de serviço complementar ao que foi feito (ex.: pneu novo → alinhamento em 10 mil km)</td><td>Venda adicional</td></tr>
+          <tr><td class="when">Óleo</td><td>Lembrete de troca a cada 6 meses ou 5 a 10 mil km, conforme o óleo usado</td><td>Recorrência</td></tr>
+          <tr><td class="when">10 mil km</td><td>Alinhamento, balanceamento e rodízio de pneus</td><td>Recorrência</td></tr>
+          <tr><td class="when">12 meses</td><td>Revisão de freios e suspensão</td><td>Segurança e ticket</td></tr>
+          <tr><td class="when">Pneu</td><td>Avaliação de desgaste perto do fim da vida útil estimada</td><td>Recompra</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="stack">
+      <div class="card card-pad">
+        <h3>Reativação da base</h3>
+        <p class="lead">Clientes e leads parados recebem periodicamente uma mensagem com motivo real para voltar: a revisão que venceu, a estação de chuva, um serviço novo na loja.</p>
+        <div class="table-scroll mt"><table class="data">
+          <thead><tr><th>Grupo</th><th>Critério</th><th class="num">Cadência</th></tr></thead>
+          <tbody>
+            <tr><td>Orçou e não comprou</td><td>Sem compra em 30 dias</td><td class="num">a cada 45 dias</td></tr>
+            <tr><td>Cliente sem retorno</td><td>Última visita há mais de 6 meses</td><td class="num">a cada 60 dias</td></tr>
+            <tr><td>Cliente inativo</td><td>Sem visita há mais de 12 meses</td><td class="num">a cada 90 dias</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="card card-pad">
+        <h3>Regras de proteção</h3>
+        <ul class="checks">
+          <li>Quem pede para sair nunca mais recebe mensagem de campanha</li>
+          <li>Intervalo mínimo entre campanhas para a mesma pessoa</li>
+          <li>Envios em lotes diários e só em horário comercial</li>
+          <li>Pausa automática se a taxa de saída subir, para proteger o número da empresa</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TIME ================= -->
+<section class="view" id="v-time">
+  <div class="view-head"><div class="eyebrow">Frente 5 · Gestão do time de vendas</div><h1>Meta clara, previsão diária e reconhecimento no tempo certo</h1><p>Um sistema de metas que a gestão configura em minutos e que o vendedor acompanha pelo celular, com alertas antes de o mês estar perdido.</p></div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><div class="card-title">Prévia · Metas de novembro<span class="sub">Dia 18 de 30 · realizado, projeção e supermeta</span></div><span class="ilustr">Dados ilustrativos</span></div>
+      <div class="card-pad">
+        <div class="bars">
+          <div class="bar-row"><span class="lbl">Empresa</span><div class="track"><div class="fill proj" style="width:96%"></div><div class="fill" style="width:62%"></div><div class="tick" style="left:90%"></div><div class="tick super" style="left:99%"></div></div><span class="pct">62%</span></div>
+          <div class="bar-row"><span class="lbl">Loja 1</span><div class="track"><div class="fill proj" style="width:100%"></div><div class="fill" style="width:68%"></div><div class="tick" style="left:90%"></div><div class="tick super" style="left:99%"></div></div><span class="pct">68%</span></div>
+          <div class="bar-row"><span class="lbl">Loja 2</span><div class="track"><div class="fill proj" style="width:88%"></div><div class="fill" style="width:55%"></div><div class="tick" style="left:90%"></div><div class="tick super" style="left:99%"></div></div><span class="pct">55%</span></div>
+          <div class="bar-row"><span class="lbl">Pneus</span><div class="track"><div class="fill proj" style="width:98%"></div><div class="fill" style="width:64%"></div><div class="tick" style="left:90%"></div><div class="tick super" style="left:99%"></div></div><span class="pct">64%</span></div>
+          <div class="bar-row"><span class="lbl">Serviços</span><div class="track"><div class="fill proj" style="width:81%"></div><div class="fill" style="width:49%"></div><div class="tick" style="left:90%"></div><div class="tick super" style="left:99%"></div></div><span class="pct">49%</span></div>
+          <div class="bar-row"><span class="lbl">Upsell</span><div class="track"><div class="fill proj" style="width:100%"></div><div class="fill" style="width:71%"></div><div class="tick" style="left:90%"></div><div class="tick super" style="left:99%"></div></div><span class="pct">71%</span></div>
+        </div>
+        <div class="legend"><span><i style="background:var(--brand)"></i>Realizado</span><span><i style="background:repeating-linear-gradient(90deg,var(--brand) 0 3px,transparent 3px 5px);opacity:.6"></i>Projeção no fim do mês</span><span><i style="background:var(--accent);width:3px"></i>Meta</span><span><i style="background:var(--gold);width:3px"></i>Supermeta</span></div>
+        <div class="divider"></div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center"><span class="pill warn">Serviços: 74% de chance de não bater</span><span class="pill ok">Loja 1: projeção acima da meta</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-title">Ranking do mês<span class="sub">Faturamento e percentual da meta individual</span></div><span class="ilustr">Dados ilustrativos</span></div>
+      <div class="rank">
+        <div class="r"><span class="pos">1</span><span class="nm">Rafael S.<small>Loja 1</small></span><span class="v">R$ 48.200</span><span class="pill ok">104%</span></div>
+        <div class="r"><span class="pos">2</span><span class="nm">Camila R.<small>Loja 2</small></span><span class="v">R$ 39.700</span><span class="pill ok">92%</span></div>
+        <div class="r"><span class="pos">3</span><span class="nm">Diego M.<small>Loja 1</small></span><span class="v">R$ 33.150</span><span class="pill warn">71%</span></div>
+        <div class="r"><span class="pos">4</span><span class="nm">Tiago L.<small>Loja 2</small></span><span class="v">R$ 21.900</span><span class="pill crit">48%</span></div>
+      </div>
+      <div class="divider" style="margin:0"></div>
+      <div class="alert-item"><span class="pill crit">Alerta</span><div><b>Tiago L. abaixo do ritmo há 6 dias</b><span>Projeção de 64% da meta. Sugestão: revisar os 7 orçamentos abertos com ele.</span></div></div>
+    </div>
+  </div>
+
+  <div class="grid-3 mt">
+    <div class="card card-pad">
+      <h3>Configuração de metas</h3>
+      <ul class="checks">
+        <li>Meta geral da empresa, por loja e por vendedor</li>
+        <li>Supermeta com premiação própria</li>
+        <li>Metas por serviço ou produto (pneus, óleo, alinhamento, freios)</li>
+        <li>Meta de upsell separada da venda principal</li>
+        <li>Pesos por dia útil e sábado</li>
+      </ul>
+    </div>
+    <div class="card card-pad">
+      <h3>Análise preditiva</h3>
+      <p class="lead">Todo dia o sistema projeta o fechamento do mês com base no ritmo atual, no dia da semana e no histórico, e calcula a chance de bater cada meta.</p>
+      <ul class="checks"><li>Alerta ao gestor quando um vendedor cai abaixo do esperado</li><li>Quanto falta vender por dia para chegar à meta</li></ul>
+    </div>
+    <div class="card card-pad">
+      <h3>Lembrete de upsell</h3>
+      <p class="lead">Ao registrar uma venda, o sistema sugere o complemento certo: pneu novo pede alinhamento, troca de óleo pede filtro de ar e palheta. A venda extra é contabilizada como upsell, por vendedor.</p>
+    </div>
+  </div>
+
+  <div class="grid-2e mt">
+    <div class="card card-pad">
+      <h3>Aplicativo do vendedor</h3>
+      <p class="lead">Instalável no celular, sem loja de aplicativos. O vendedor vê o próprio desempenho, os leads do dia e registra a evolução das vendas.</p>
+      <ul class="checks">
+        <li>Meta individual, projeção e posição no ranking</li>
+        <li>Funil pessoal com os leads recebidos no rodízio</li>
+        <li>Aviso quando está abaixo do ritmo, com o que fazer para recuperar</li>
+        <li>Parabéns e incentivo quando passa da meta ou da supermeta</li>
+        <li>Notificação de novo lead e de retorno agendado</li>
+      </ul>
+    </div>
+    <div class="card card-pad" style="display:flex;align-items:center;justify-content:center">
+      <div class="mobile"><div class="scr">
+        <span class="hello">Bom dia, Rafael</span>
+        <div class="ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="var(--surface-3)" stroke-width="12"/><circle cx="60" cy="60" r="50" fill="none" stroke="var(--brand)" stroke-width="12" stroke-linecap="round"/></svg><div class="c"><b>104%</b><span>da meta</span></div></div>
+        <div class="notif ok"><b>Meta batida com 12 dias de antecedência</b>Faltam R$ 3.100 para a supermeta.</div>
+        <div class="notif up"><b>Oportunidade de upsell</b>Juliana comprou 2 pneus. Ofereça alinhamento.</div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FINANCEIRO ================= -->
+<section class="view" id="v-financeiro">
+  <div class="view-head"><div class="eyebrow">Frente 6 · Financeiro</div><h1>Boleto enviado e cobrado sem ninguém pegar o telefone</h1><p>Envio automático de boletos e uma régua de cobrança com prazo de atendimento definido, sempre pelo WhatsApp oficial e em tom cordial.</p></div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><div class="card-title">Régua de cobrança<span class="sub">Prazos configuráveis pela gestão, por cliente ou por tipo de conta</span></div></div>
+      <div class="table-scroll"><table class="data">
+        <thead><tr><th>Quando</th><th>Ação</th><th>Responsável</th></tr></thead>
+        <tbody>
+          <tr><td class="when">D-3</td><td>Envio do boleto com valor, vencimento e código de pagamento (prazo ajustável)</td><td><span class="pill brand">Automático</span></td></tr>
+          <tr><td class="when">D0</td><td>Lembrete no dia do vencimento</td><td><span class="pill brand">Automático</span></td></tr>
+          <tr><td class="when">D+1</td><td>Aviso cordial de pagamento em aberto, com segunda via</td><td><span class="pill brand">Automático</span></td></tr>
+          <tr><td class="when">D+5</td><td>Nova mensagem e oferta de acordo ou nova data</td><td><span class="pill brand">Automático</span></td></tr>
+          <tr><td class="when">D+10</td><td>Contato pessoal do financeiro, com o histórico da conversa</td><td><span class="pill warn">Financeiro</span></td></tr>
+          <tr><td class="when">D+30</td><td>Decisão da gestão sobre bloqueio de crédito ou cobrança formal</td><td><span class="pill crit">Gestão</span></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="stack">
+      <div class="card card-pad">
+        <h3>Integração com o financeiro</h3>
+        <p class="lead">Primeiro verificamos se o sistema financeiro oferece integração. Se oferecer, a cobrança lê os títulos direto dele. Se não, o mesmo modelo do catálogo: um agente lê diariamente as contas a receber e atualiza a régua.</p>
+        <ul class="checks"><li>Pagamento confirmado encerra a régua no mesmo dia</li><li>Cliente que pagou não recebe cobrança por engano</li></ul>
+      </div>
+      <div class="card card-pad">
+        <h3>Painel de recebíveis</h3>
+        <div class="grid-2e" style="gap:12px;margin-top:6px">
+          <div class="kpi" style="padding:0"><span class="label">A vencer em 7 dias</span><span class="value" style="font-size:18px">R$ 18.430</span></div>
+          <div class="kpi" style="padding:0"><span class="label">Em atraso</span><span class="value" style="font-size:18px">R$ 4.120</span></div>
+          <div class="kpi" style="padding:0"><span class="label">Recuperado pela régua</span><span class="value" style="font-size:18px">R$ 6.870</span></div>
+          <div class="kpi" style="padding:0"><span class="label">Inadimplência</span><span class="value" style="font-size:18px">3,1%</span></div>
+        </div>
+        <p class="foot-note">Valores ilustrativos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ARQUITETURA ================= -->
+<section class="view" id="v-arquitetura">
+  <div class="view-head"><div class="eyebrow">Execução · Arquitetura</div><h1>Uma plataforma, com dados da Mariana Pneus</h1><p>Mesma base tecnológica já em produção em outros clientes da RAISE, hospedada em servidor dedicado e sem cobrança por usuário.</p></div>
+  <div class="card">
+    <div class="table-scroll"><table class="data">
+      <thead><tr><th>Camada</th><th>Função</th><th>Situação</th></tr></thead>
+      <tbody>
+        <tr><td><b>WhatsApp oficial</b></td><td>Canal de atendimento, pós-venda, reativação e cobrança, com número verificado da empresa</td><td><span class="pill ok">Pronto para uso</span></td></tr>
+        <tr><td><b>Atendimento com IA</b></td><td>Agente que conversa, qualifica, consulta o catálogo e passa para o vendedor</td><td><span class="pill ok">Modelo em produção</span></td></tr>
+        <tr><td><b>Mariana OS</b></td><td>Painel web e app: conversas, CRM, metas, ranking, cobrança e tráfego</td><td><span class="pill brand">Configurado para a loja</span></td></tr>
+        <tr><td><b>Base de dados própria</b></td><td>Clientes, veículos, vendas, metas e histórico de manutenção</td><td><span class="pill brand">Configurado para a loja</span></td></tr>
+        <tr><td><b>Agente de catálogo</b></td><td>Leitura diária do sistema de vendas, que não possui API</td><td><span class="pill warn">Desenvolvimento</span></td></tr>
+        <tr><td><b>Agente financeiro</b></td><td>Integração ou leitura diária das contas a receber</td><td><span class="pill warn">Depende do sistema</span></td></tr>
+        <tr><td><b>Anúncios do Meta</b></td><td>Painel de tráfego, agente de campanhas e públicos para remarketing</td><td><span class="pill ok">Modelo em produção</span></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <div class="grid-3 mt">
+    <div class="card card-pad"><h3>Dados da empresa</h3><p class="lead">A base de clientes e o histórico são da Mariana Pneus, em servidor dedicado, com cópia de segurança diária.</p></div>
+    <div class="card card-pad"><h3>LGPD</h3><p class="lead">Política de privacidade publicada, opção de sair em toda campanha e uso dos dados só para atendimento e relacionamento.</p></div>
+    <div class="card card-pad"><h3>Sem amarras por usuário</h3><p class="lead">Mais vendedores ou uma terceira loja não aumentam a mensalidade da plataforma.</p></div>
+  </div>
+</section>
+
+<!-- ================= ROADMAP ================= -->
+<section class="view" id="v-roadmap">
+  <div class="view-head"><div class="eyebrow">Execução · Roadmap</div><h1>90 dias para a operação completa</h1><p>A ordem segue o impacto no caixa: primeiro parar de perder o cliente que já chama, depois organizar a venda, depois escalar a aquisição.</p></div>
+  <div class="grid-3">
+    <div class="card card-pad phase">
+      <span class="when">FASE 1 · SEMANAS 1 A 4</span><h3>Atender e registrar</h3>
+      <ul class="checks">
+        <li>Diagnóstico com dados reais e definição das metas</li>
+        <li>Agente de catálogo lendo o sistema de vendas</li>
+        <li>WhatsApp oficial com IA de atendimento</li>
+        <li>CRM com funil, rodízio e passagem para o vendedor</li>
+        <li>Treinamento do time</li>
+      </ul>
+    </div>
+    <div class="card card-pad phase">
+      <span class="when">FASE 2 · SEMANAS 5 A 8</span><h3>Vender e reter</h3>
+      <ul class="checks">
+        <li>Funil por vendedor e devolução para a IA</li>
+        <li>Follow-up automático</li>
+        <li>Régua de pós-venda e avaliação no Google</li>
+        <li>Cobrança automática de boletos</li>
+        <li>Primeira campanha de reativação</li>
+      </ul>
+    </div>
+    <div class="card card-pad phase">
+      <span class="when">FASE 3 · SEMANAS 9 A 12</span><h3>Gerir e escalar</h3>
+      <ul class="checks">
+        <li>Metas, supermeta, previsão e ranking</li>
+        <li>App do vendedor com alertas</li>
+        <li>Lembrete e contabilização de upsell</li>
+        <li>Painel de tráfego e agente de campanhas</li>
+        <li>Inteligência de anúncios e copy</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card mt">
+    <div class="card-head"><div class="card-title">Governança contínua, depois da implantação<span class="sub">O que mantém o resultado crescendo</span></div></div>
+    <div class="table-scroll"><table class="data">
+      <thead><tr><th>Ritual</th><th>Frequência</th><th>Conteúdo</th></tr></thead>
+      <tbody>
+        <tr><td><b>Leitura de resultado</b></td><td>Mensal</td><td>Metas, funil, motivos de perda, retorno de mídia e plano de ação do mês seguinte</td></tr>
+        <tr><td><b>Revisão da IA</b></td><td>Quinzenal</td><td>Conversas que travaram, ajustes de abordagem e novas respostas</td></tr>
+        <tr><td><b>Calendário comercial</b></td><td>Trimestral</td><td>Campanhas sazonais (férias, chuva, fim de ano) e metas por serviço</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<!-- ================= INVESTIMENTO ================= -->
+<section class="view" id="v-investimento">
+  <div class="view-head"><div class="eyebrow">Execução · Investimento</div><h1>Investimento</h1><p>Modelo em duas partes: implantação da estratégia e da plataforma, e acompanhamento mensal com a operação rodando.</p></div>
+  <div class="grid-2e">
+    <div class="card card-pad">
+      <span class="eyebrow">Implantação · 90 dias</span>
+      <h3 style="margin-top:6px">Estratégia + Mariana OS</h3>
+      <p class="price">R$ 13.500 <small>em 3 pagamentos de R$ 4.500</small></p>
+      <ul class="checks">
+        <li>Diagnóstico e plano de marketing, comercial e pós-venda</li>
+        <li>Atendimento com IA, CRM, rodízio e follow-up</li>
+        <li>Pós-venda, reativação e cobrança automática</li>
+        <li>Metas, previsão, ranking e app do vendedor</li>
+        <li>Painel de tráfego, agente de campanhas e inteligência de anúncios</li>
+        <li>Agentes de catálogo e financeiro</li>
+        <li>Treinamento da gestão e dos vendedores</li>
+      </ul>
+    </div>
+    <div class="card card-pad">
+      <span class="eyebrow">Recorrente · a partir do 4º mês</span>
+      <h3 style="margin-top:6px">Advisory de Growth + operação da plataforma</h3>
+      <p class="price">R$ 3.500 <small>/ mês · contrato mínimo de 6 meses</small></p>
+      <ul class="checks">
+        <li>Rituais mensais de resultado e plano de ação</li>
+        <li>Evolução contínua da IA e das automações</li>
+        <li>Hospedagem, segurança, cópias de segurança e suporte</li>
+        <li>Novas campanhas de reativação e calendário comercial</li>
+      </ul>
+      <div class="divider"></div>
+      <p class="lead"><b>Custos de terceiros, pagos direto pela empresa:</b> mensagens do WhatsApp oficial (cobradas por conversa iniciada pela empresa), uso da IA e verba de anúncios.</p>
+    </div>
+  </div>
+  <div class="card mt">
+    <div class="card-head"><div class="card-title">Próximos passos</div></div>
+    <div class="table-scroll"><table class="data">
+      <thead><tr><th>Etapa</th><th>O que acontece</th><th>Prazo</th></tr></thead>
+      <tbody>
+        <tr><td><b>Aprovação</b></td><td>Assinatura da proposta e definição do responsável interno</td><td class="when">Semana 0</td></tr>
+        <tr><td><b>Acessos</b></td><td>Sistema de vendas, sistema financeiro, conta de anúncios do Meta e número de WhatsApp</td><td class="when">Semana 1</td></tr>
+        <tr><td><b>Imersão</b></td><td>Visita às duas lojas, entrevista com vendedores e leitura dos dados</td><td class="when">Semana 1</td></tr>
+        <tr><td><b>Primeira entrega</b></td><td>Atendimento com IA e CRM funcionando com o time</td><td class="when">Semana 4</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <p class="foot-note">Proposta válida por 15 dias. RAISE · Thiago Fonseca, Executivo de Growth &amp; Revenue.</p>
+</section>
+
+    </main>
+  </div>
+</div>
+
+<script>
+(function(){
+  var order=["visao-geral","diagnostico","marketing","atendimento","comercial","pos-vendas","time","financeiro","arquitetura","roadmap","investimento"];
+  var links=document.querySelectorAll('.nav-btn');
+  var crumb=document.getElementById('crumb');
+  var prev=document.getElementById('prev'), next=document.getElementById('next');
+  function show(id){
+    if(order.indexOf(id)<0) id=order[0];
+    document.querySelectorAll('.view').forEach(function(v){v.classList.toggle('active',v.id==='v-'+id)});
+    links.forEach(function(a){var on=a.dataset.v===id;a.classList.toggle('active',on);if(on)crumb.textContent=a.textContent.trim();});
+    var i=order.indexOf(id);
+    prev.disabled=i===0; next.disabled=i===order.length-1;
+    prev.onclick=function(){if(i>0)location.hash=order[i-1]};
+    next.onclick=function(){if(i<order.length-1)location.hash=order[i+1]};
+    window.scrollTo(0,0);
+  }
+  window.addEventListener('hashchange',function(){show(location.hash.slice(1))});
+  show(location.hash.slice(1));
+})();
+</script>
+
+</body></html>
