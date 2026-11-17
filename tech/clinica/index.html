@@ -1,0 +1,1326 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Raise Clínica · IA que agenda, confirma e traz o paciente de volta | Raise Tech</title>
+<meta name="description" content="Para clínicas médicas, odontológicas e de estética: assistente de IA no WhatsApp que acolhe, agenda e confirma consultas 24h, recall de pacientes, gestão da equipe e um conselheiro que lê os números da clínica.">
+<link rel="canonical" href="https://gruporaise.com.br/tech/clinica/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Raise Clínica · agenda cheia e paciente que volta">
+<meta property="og:description" content="A IA acolhe, agenda e confirma o paciente no WhatsApp 24h. Toda semana, o Conselheiro mostra onde a clínica perde agenda e faturamento.">
+<meta property="og:url" content="https://gruporaise.com.br/tech/clinica/">
+<meta property="og:image" content="https://gruporaise.com.br/assets/img/logo_raise_cor.png">
+<link rel="icon" type="image/svg+xml" href="/assets/img/favicon_raise.svg">
+<link rel="icon" type="image/png" href="/assets/img/favicon_raise.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+@media (max-width:640px){h1{font-size:38px !important;letter-spacing:-1px !important}h2{font-size:30px !important}#contato h2{font-size:34px !important}header a[href="#contato"]{font-size:13px !important;padding:10px 14px !important}}
+
+body{margin:0;background:#F4F6FA}
+a{color:#137F79}a:hover{color:#0E5F5A}
+.btn{font:inherit;cursor:pointer;border:0}
+.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:56px;align-items:center}
+.track{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}
+.navlinks{display:flex;gap:28px;align-items:center}
+details summary{cursor:pointer;list-style:none}
+details summary::-webkit-details-marker{display:none}
+@media (max-width:1000px){
+.track{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(2,minmax(0,1fr))}
+.hero{grid-template-columns:minmax(0,1fr)}
+.navlinks{display:none}
+}
+@media (max-width:640px){
+.g2,.g3,.g4{grid-template-columns:minmax(0,1fr)}
+.track{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+
+
+.dbtn{font:inherit;cursor:pointer;border:0;text-align:left}
+
+</style>
+</head>
+<body>
+<div id="page-root"></div>
+<template id="tpl-page">
+<div style="font-family: Inter, system-ui, sans-serif; color: #1D304E; background: #F4F6FA; width: 100%">
+
+<!-- NAV -->
+<header style="background: #FFFFFF; border-bottom: 1px solid #E1E7EF">
+<div style="max-width: 1200px; margin: 0 auto; padding: 18px 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px">
+<a href="#topo" style="text-decoration: none; display: flex; align-items: baseline; gap: 6px">
+<span style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 26px; color: #1D304E; letter-spacing: -0.5px">raise</span>
+<span style="font-family: Montserrat, sans-serif; font-weight: 600; font-size: 26px; color: #137F79; letter-spacing: -0.5px">clínica</span>
+</a>
+<nav class="navlinks" aria-label="Principal">
+<a href="#especialidades" style="color: #3E5068; text-decoration: none; font-size: 15px; font-weight: 500">Especialidades</a>
+<a href="#jornada" style="color: #3E5068; text-decoration: none; font-size: 15px; font-weight: 500">Atendimento IA</a>
+<a href="#conselheiro" style="color: #3E5068; text-decoration: none; font-size: 15px; font-weight: 500">Conselheiro</a>
+<a href="#demo" style="color: #3E5068; text-decoration: none; font-size: 15px; font-weight: 500">Por dentro</a>
+<a href="#planos" style="color: #3E5068; text-decoration: none; font-size: 15px; font-weight: 500">Planos</a>
+</nav>
+<a href="#contato" style="background: #1D304E; color: #FFFFFF; text-decoration: none; font-weight: 700; font-size: 15px; padding: 12px 20px; border-radius: 999px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Agendar demonstração</a>
+</div>
+</header>
+
+<!-- HERO -->
+<section id="topo" style="background: #EEF6F6; padding: 64px 0 104px; overflow: hidden">
+<div class="hero" style="max-width: 1200px; margin: 0 auto; padding: 0 32px">
+<div style="display: flex; flex-direction: column; gap: 24px">
+<span style="align-self: flex-start; font-size: 14px; font-weight: 700; color: #0E6B66; background: #D6EFED; padding: 8px 14px; border-radius: 999px">Para clínicas médicas, odontológicas e de estética</span>
+<h1 style="margin: 0; font-family: Montserrat, sans-serif; font-weight: 800; font-size: 54px; line-height: 1.07; letter-spacing: -1.5px; color: #1D304E">Agenda cheia, paciente que volta e uma recepção que respira.</h1>
+<p style="margin: 0; font-size: 19px; line-height: 1.6; color: #3E5068; max-width: 560px">A IA acolhe, qualifica e agenda o paciente no WhatsApp 24 horas, confirma a consulta e chama de volta quem sumiu. Toda semana, o Conselheiro mostra onde a sua clínica está perdendo agenda e faturamento.</p>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 14px; font-weight: 600; color: #3E5068">Veja um exemplo da sua especialidade:</span>
+<div style="display: inline-flex; flex-wrap: wrap; align-self: flex-start; background: #FFFFFF; border: 1px solid #C9DDDD; border-radius: 26px; padding: 5px; gap: 4px" role="group" aria-label="Especialidade">
+<sc-for list="{{specs}}" as="sp" hint-placeholder-count="3">
+<sc-if value="{{sp.active}}" hint-placeholder-val="{{ false }}"><button class="btn" type="button" aria-pressed="true" style="background: #1D304E; color: #FFFFFF; font-weight: 700; font-size: 14px; padding: 10px 18px; border-radius: 999px; min-height: 44px">{{sp.label}}</button></sc-if>
+<sc-if value="{{sp.inactive}}" hint-placeholder-val="{{ true }}"><button class="btn" type="button" aria-pressed="false" onClick="{{sp.pick}}" style="background: transparent; color: #3E5068; font-weight: 600; font-size: 14px; padding: 10px 18px; border-radius: 999px; min-height: 44px">{{sp.label}}</button></sc-if>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 14px">
+<a href="#demo" style="background: #1D304E; color: #FFFFFF; text-decoration: none; font-weight: 700; font-size: 16px; padding: 16px 26px; border-radius: 999px; min-height: 52px; box-sizing: border-box; display: inline-flex; align-items: center">Ver a plataforma por dentro</a>
+<a href="{{c.waHref}}" target="_blank" rel="noopener" style="background: #FFFFFF; color: #1D304E; text-decoration: none; font-weight: 700; font-size: 16px; padding: 16px 26px; border-radius: 999px; border: 1px solid #C7D1DE; min-height: 52px; box-sizing: border-box; display: inline-flex; align-items: center">Falar no WhatsApp</a>
+</div>
+</div>
+
+<!-- devices -->
+<div style="position: relative; padding: 0 0 40px 60px">
+<div style="display: flex; flex-direction: column; align-items: center">
+<div style="width: 100%; background: #0B1422; border-radius: 18px 18px 0 0; padding: 12px 12px 14px; box-sizing: border-box; box-shadow: 0 30px 60px rgba(29,48,78,0.25)">
+<div style="width: 6px; height: 6px; border-radius: 50%; background: #2E3F57; margin: 0 auto 8px"></div>
+<div style="background: #F4F6FA; border-radius: 6px; overflow: hidden; display: flex; height: 340px">
+<div style="width: 92px; background: #0F1B2E; padding: 12px 10px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0">
+<span style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 12px; color: #FFFFFF">raise <span style="color: #3CC7BE">clínica</span></span>
+<span style="font-size: 10px; color: #B5C2D6; padding: 6px">Painel</span>
+<span style="font-size: 10px; color: #FFFFFF; background: #1D304E; padding: 6px; border-radius: 5px">Agenda</span>
+<span style="font-size: 10px; color: #B5C2D6; padding: 6px">Conversas</span>
+<span style="font-size: 10px; color: #B5C2D6; padding: 6px">Pacientes</span>
+<span style="font-size: 10px; color: #B5C2D6; padding: 6px">Conselheiro</span>
+</div>
+<div style="flex: 1; padding: 12px; display: flex; flex-direction: column; gap: 8px; min-width: 0">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 8px">
+<span style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 12px; color: #1D304E">{{h.agendaTitle}}</span>
+<span style="font-size: 9px; font-weight: 700; color: #0E6B66; background: #E3F5F4; padding: 3px 7px; border-radius: 999px">{{h.agendaKpi}}</span>
+</div>
+<sc-for list="{{h.slots}}" as="s" hint-placeholder-count="6">
+<div style="background: #FFFFFF; border-radius: 7px; padding: 7px 9px; display: flex; align-items: center; gap: 9px; border-left: 3px solid {{s.bar}}">
+<span style="font-size: 10px; font-weight: 700; color: #1D304E; width: 34px; flex-shrink: 0">{{s.t}}</span>
+<div style="display: flex; flex-direction: column; flex: 1; min-width: 0"><span style="font-size: 10px; font-weight: 700; color: #1D304E">{{s.p}}</span><span style="font-size: 9px; color: #5A6B82">{{s.what}}</span></div>
+<span style="font-size: 8px; font-weight: 700; padding: 3px 6px; border-radius: 999px; background: {{s.bg}}; color: {{s.fg}}; white-space: nowrap">{{s.st}}</span>
+</div>
+</sc-for>
+<div style="background: #0F1B2E; border-radius: 7px; padding: 8px 10px; display: flex; gap: 8px; align-items: center">
+<span style="font-size: 8px; font-weight: 800; color: #0B1A2E; background: #3CC7BE; padding: 2px 6px; border-radius: 4px">CONSELHEIRO</span>
+<span style="font-size: 9.5px; color: #FFFFFF">{{h.read}}</span>
+</div>
+</div>
+</div>
+</div>
+<div style="width: 112%; height: 16px; background: #C9D1DC; border-radius: 0 0 16px 16px"><div style="width: 90px; height: 6px; background: #AEB8C6; border-radius: 0 0 8px 8px; margin: 0 auto"></div></div>
+</div>
+<div style="position: absolute; left: 0; bottom: 0; width: 200px; background: #0B1422; border-radius: 32px; padding: 9px; box-sizing: border-box; box-shadow: 0 24px 48px rgba(29,48,78,0.35)">
+<div style="background: #EAE6DF; border-radius: 24px; overflow: hidden; height: 370px; display: flex; flex-direction: column">
+<div style="background: #0E6B66; padding: 22px 12px 10px; display: flex; flex-direction: column; gap: 1px">
+<span style="font-size: 11px; font-weight: 700; color: #FFFFFF">{{h.biz}}</span>
+<span style="font-size: 9px; color: #CDEDEA">Assistente · online</span>
+</div>
+<div style="flex: 1; padding: 10px 8px; display: flex; flex-direction: column; gap: 7px">
+<sc-for list="{{h.chat}}" as="m" hint-placeholder-count="4">
+<sc-if value="{{m.ia}}" hint-placeholder-val="{{ false }}"><span style="align-self: flex-end; max-width: 86%; background: #D7F5E3; font-size: 10px; line-height: 1.4; padding: 7px 9px; border-radius: 10px 10px 3px 10px">{{m.t}}</span></sc-if>
+<sc-if value="{{m.lead}}" hint-placeholder-val="{{ true }}"><span style="align-self: flex-start; max-width: 86%; background: #FFFFFF; font-size: 10px; line-height: 1.4; padding: 7px 9px; border-radius: 10px 10px 10px 3px">{{m.t}}</span></sc-if>
+</sc-for>
+<span style="align-self: center; font-size: 9px; font-weight: 700; color: #0E6B66; background: #FFFFFF; padding: 4px 8px; border-radius: 999px; margin-top: 4px">{{h.done}}</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ESPECIALIDADES -->
+<section id="especialidades" style="padding: 96px 0">
+<div style="max-width: 1200px; margin: 0 auto; padding: 0 32px; display: flex; flex-direction: column; gap: 44px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 780px">
+<span style="font-size: 15px; font-weight: 600; color: #137F79">Uma plataforma, configurada para a sua rotina</span>
+<h2 style="margin: 0; font-family: Montserrat, sans-serif; font-weight: 800; font-size: 42px; line-height: 1.12; letter-spacing: -1px">Cada especialidade perde paciente num ponto diferente. A Raise Clínica cuida de cada um.</h2>
+</div>
+<div class="g3">
+<article style="background: #FFFFFF; border-radius: 22px; border: 1px solid #E1E7EF; padding: 30px; display: flex; flex-direction: column; gap: 16px">
+<span style="width: 52px; height: 52px; border-radius: 16px; background: #F3EEF9; display: inline-flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#6B4FA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 4.6L18.5 9l-4.7 1.4L12 15l-1.8-4.6L5.5 9l4.7-1.4z"></path><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z"></path></svg></span>
+<h3 style="margin: 0; font-family: Montserrat, sans-serif; font-weight: 700; font-size: 22px">Estética</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #4A5C74">Lead de anúncio que pergunta preço e some, avaliação que vira falta e pacote que não renova.</p>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 9px; font-size: 15px; line-height: 1.5">
+<li>✓ Responde o anúncio na hora, sem passar preço se você não quiser</li>
+<li>✓ Agenda a avaliação e confirma em duas etapas</li>
+<li>✓ Lembra a próxima sessão e a renovação do protocolo</li>
+<li>✓ Mede o custo por avaliação realizada, não por clique</li>
+</ul>
+</article>
+<article style="background: #FFFFFF; border-radius: 22px; border: 1px solid #E1E7EF; padding: 30px; display: flex; flex-direction: column; gap: 16px">
+<span style="width: 52px; height: 52px; border-radius: 16px; background: #E6F1FB; display: inline-flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2364A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3c-2.2 0-4 1.8-4 4.2 0 2.3.8 3.6 1.4 5.5.6 1.9.8 4.3 1.3 6.3.3 1.3 1.1 2 1.8 2s1.2-.8 1.5-2.2c.3-1.6.6-3.8 1.3-4.6.4-.5 1-.5 1.4 0 .7.8 1 3 1.3 4.6.3 1.4.8 2.2 1.5 2.2s1.5-.7 1.8-2c.5-2 .7-4.4 1.3-6.3.6-1.9 1.4-3.2 1.4-5.5C21 4.8 19.2 3 17 3c-1.9 0-3 1-5 1S8.9 3 7 3z"></path></svg></span>
+<h3 style="margin: 0; font-family: Montserrat, sans-serif; font-weight: 700; font-size: 22px">Odontologia</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #4A5C74">Plano de tratamento que fica parado no orçamento, urgência fora do horário e paciente que nunca volta para a limpeza.</p>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 9px; font-size: 15px; line-height: 1.5">
+<li>✓ Encaixa urgências e organiza a fila de avaliação</li>
+<li>✓ Retoma o orçamento em 48h, com resumo do plano</li>
+<li>✓ Recall automático de limpeza e manutenção</li>
+<li>✓ Mede a aprovação de orçamento por profissional e CRC</li>
+</ul>
+</article>
+<article style="background: #FFFFFF; border-radius: 22px; border: 1px solid #E1E7EF; padding: 30px; display: flex; flex-direction: column; gap: 16px">
+<span style="width: 52px; height: 52px; border-radius: 16px; background: #E3F5F4; display: inline-flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0E6B66" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3v6a5 5 0 0 0 10 0V3"></path><path d="M10 14v2a5 5 0 0 0 10 0v-3"></path><circle cx="20" cy="11" r="2"></circle><path d="M4 3h2"></path><path d="M14 3h2"></path></svg></span>
+<h3 style="margin: 0; font-family: Montserrat, sans-serif; font-weight: 700; font-size: 22px">Clínica médica</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #4A5C74">Falta em primeira consulta, retorno que não é marcado depois do exame e recepção presa no telefone.</p>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 9px; font-size: 15px; line-height: 1.5">
+<li>✓ Agenda por especialidade, profissional e convênio</li>
+<li>✓ Confirma, remarca e oferece o horário a quem está na espera</li>
+<li>✓ Chama o paciente para o retorno quando o exame fica pronto</li>
+<li>✓ Mede ocupação da agenda e faltas por tipo de consulta</li>
+</ul>
+</article>
+</div>
+</div>
+</section>
+
+<!-- JORNADA -->
+<section id="jornada" style="background: #FFFFFF; padding: 96px 0; border-top: 1px solid #E1E7EF">
+<div style="max-width: 1200px; margin: 0 auto; padding: 0 32px; display: flex; flex-direction: column; gap: 44px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 28px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 700px">
+<span style="font-size: 15px; font-weight: 600; color: #137F79">A jornada do paciente, no automático</span>
+<h2 style="margin: 0; font-family: Montserrat, sans-serif; font-weight: 800; font-size: 42px; line-height: 1.12; letter-spacing: -1px">Do primeiro “oi” ao retorno, sem o paciente esperar ninguém.</h2>
+</div>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #4A5C74; max-width: 420px">A IA resolve sozinha a maior parte das conversas. Dúvida clínica, urgência ou reclamação vão para a pessoa certa da equipe, com o resumo pronto.</p>
+</div>
+<ol class="track" style="list-style: none; margin: 0; padding: 0">
+<li style="background: #F4F6FA; border-radius: 22px; padding: 22px 18px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 15px; color: #137F79">1</span>
+<span style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 17px">Acolhe na hora</span>
+<span style="font-size: 14px; line-height: 1.5; color: #4A5C74">Anúncio, Instagram ou indicação: resposta em segundos, inclusive à noite.</span>
+</li>
+<li style="background: #F4F6FA; border-radius: 22px; padding: 22px 18px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 15px; color: #137F79">2</span>
+<span style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 17px">Entende a queixa</span>
+<span style="font-size: 14px; line-height: 1.5; color: #4A5C74">Pergunta o necessário, identifica convênio ou particular e a urgência.</span>
+</li>
+<li style="background: #F4F6FA; border-radius: 22px; padding: 22px 18px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 15px; color: #137F79">3</span>
+<span style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 17px">Agenda</span>
+<span style="font-size: 14px; line-height: 1.5; color: #4A5C74">Consulta, avaliação ou encaixe, com o profissional certo.</span>
+</li>
+<li style="background: #F4F6FA; border-radius: 22px; padding: 22px 18px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 15px; color: #137F79">4</span>
+<span style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 17px">Confirma e reduz faltas</span>
+<span style="font-size: 14px; line-height: 1.5; color: #4A5C74">Confirmação em duas etapas, orientações e lista de espera.</span>
+</li>
+<li style="background: #F4F6FA; border-radius: 22px; padding: 22px 18px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 15px; color: #137F79">5</span>
+<span style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 17px">Acompanha o pós-consulta</span>
+<span style="font-size: 14px; line-height: 1.5; color: #4A5C74">Retoma o plano de tratamento e chama para o retorno ou a próxima sessão.</span>
+</li>
+<li style="background: #1D304E; border-radius: 22px; padding: 22px 18px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 15px; color: #3CC7BE">6</span>
+<span style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 17px; color: #FFFFFF">Chama a equipe quando precisa</span>
+<span style="font-size: 14px; line-height: 1.5; color: #C9D3E3">Dúvida clínica, urgência ou caso fora do padrão vão para um humano.</span>
+</li>
+</ol>
+</div>
+</section>
+
+<!-- SEGURANÇA -->
+<section style="background: #1D304E; padding: 88px 0">
+<div class="g2" style="max-width: 1200px; margin: 0 auto; padding: 0 32px; gap: 56px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<span style="font-size: 15px; font-weight: 600; color: #3CC7BE">Feita para a realidade da saúde</span>
+<h2 style="margin: 0; font-family: Montserrat, sans-serif; font-weight: 800; font-size: 38px; line-height: 1.15; letter-spacing: -1px; color: #FFFFFF">A IA atende como a sua melhor recepcionista, e só como ela.</h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.65; color: #C9D3E3">Você define o que a assistente pode e não pode dizer. Ela segue o tom da clínica e passa para a equipe tudo o que exige um profissional de saúde.</p>
+</div>
+<div class="g2" style="gap: 16px">
+<div style="background: #0F1B2E; border-radius: 18px; padding: 22px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 17px; color: #FFFFFF">Não faz diagnóstico</span><span style="font-size: 14px; line-height: 1.55; color: #C9D3E3">Acolhe a queixa e encaminha. Dúvida clínica vai sempre para a equipe.</span></div>
+<div style="background: #0F1B2E; border-radius: 18px; padding: 22px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 17px; color: #FFFFFF">Não promete resultado</span><span style="font-size: 14px; line-height: 1.55; color: #C9D3E3">Linguagem alinhada às boas práticas de comunicação em saúde.</span></div>
+<div style="background: #0F1B2E; border-radius: 18px; padding: 22px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 17px; color: #FFFFFF">Valores só se você quiser</span><span style="font-size: 14px; line-height: 1.55; color: #C9D3E3">Pode informar, dar faixas ou deixar para a avaliação.</span></div>
+<div style="background: #0F1B2E; border-radius: 18px; padding: 22px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 17px; color: #FFFFFF">Dados protegidos</span><span style="font-size: 14px; line-height: 1.55; color: #C9D3E3">Tratamento conforme a LGPD, com acesso por perfil na equipe.</span></div>
+</div>
+</div>
+</section>
+
+<!-- CONSELHEIRO -->
+<section id="conselheiro" style="padding: 96px 0">
+<div style="max-width: 1200px; margin: 0 auto; padding: 0 32px; display: flex; flex-direction: column; gap: 44px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 800px">
+<span style="font-size: 15px; font-weight: 600; color: #137F79">Inteligência de negócios</span>
+<h2 style="margin: 0; font-family: Montserrat, sans-serif; font-weight: 800; font-size: 42px; line-height: 1.12; letter-spacing: -1px">Um conselheiro que lê os números da clínica toda semana.</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #4A5C74">Ele diz o que mudou, por que provavelmente mudou e quais caminhos você tem, com a fonte de cada argumento. A decisão continua com você.</p>
+</div>
+<div class="g3">
+<div style="background: #FFFFFF; border: 1px solid #E1E7EF; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 12px">
+<span style="align-self: flex-start; font-size: 12px; font-weight: 700; color: #6B4FA0; background: #F3EEF9; padding: 4px 10px; border-radius: 999px">Estética</span>
+<span style="font-size: 16px; line-height: 1.5; font-weight: 600">O custo por avaliação realizada subiu 38% na campanha de harmonização.</span>
+<span style="font-size: 14px; line-height: 1.55; color: #4A5C74">Caminho sugerido: corrigir criativo e qualificação antes de aumentar a verba.</span>
+<span style="margin-top: auto; font-size: 12px; color: #5A6B82">Fonte: seus dados de campanha e funil</span>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #E1E7EF; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 12px">
+<span style="align-self: flex-start; font-size: 12px; font-weight: 700; color: #2364A8; background: #E6F1FB; padding: 4px 10px; border-radius: 999px">Odontologia</span>
+<span style="font-size: 16px; line-height: 1.5; font-weight: 600">212 pacientes estão com a limpeza vencida há mais de 6 meses.</span>
+<span style="font-size: 14px; line-height: 1.55; color: #4A5C74">Caminho sugerido: recall automático com horários disponíveis da semana.</span>
+<span style="margin-top: auto; font-size: 12px; color: #5A6B82">Fonte: seu histórico de atendimentos</span>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #E1E7EF; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 12px">
+<span style="align-self: flex-start; font-size: 12px; font-weight: 700; color: #0E6B66; background: #E3F5F4; padding: 4px 10px; border-radius: 999px">Clínica médica</span>
+<span style="font-size: 16px; line-height: 1.5; font-weight: 600">As faltas em primeira consulta dobraram: 14 horários perdidos por semana.</span>
+<span style="font-size: 14px; line-height: 1.55; color: #4A5C74">Caminho sugerido: confirmação em duas etapas e lista de espera antes de abrir agenda nova.</span>
+<span style="margin-top: auto; font-size: 12px; color: #5A6B82">Fonte: sua agenda + gestão de agenda em saúde</span>
+</div>
+</div>
+<span style="font-size: 13px; color: #5A6B82">Exemplos ilustrativos.</span>
+</div>
+</section>
+
+<!-- DEMO -->
+<section id="demo" style="background: #EEF6F6; padding: 96px 0 88px">
+<div style="max-width: 1200px; margin: 0 auto; padding: 0 32px; display: flex; flex-direction: column; gap: 36px">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center">
+<span style="font-size: 15px; font-weight: 600; color: #137F79">Demonstração aberta, sem cadastro</span>
+<h2 style="margin: 0; font-family: Montserrat, sans-serif; font-weight: 800; font-size: 42px; line-height: 1.12; letter-spacing: -1px; max-width: 760px">Navegue pela clínica da sua especialidade.</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #4A5C74; max-width: 680px">Escolha estética, odontologia ou clínica médica e percorra o painel, as conversas, o funil de pacientes, a equipe, a leitura da semana e o Conselheiro.</p>
+</div>
+<div style="width: 100%; display: flex; flex-direction: column; align-items: center">
+<div style="width: 100%; background: #0B1422; border-radius: 26px 26px 0 0; padding: 14px 14px 20px; box-sizing: border-box; box-shadow: 0 40px 80px rgba(29,48,78,0.25)">
+<div style="width: 8px; height: 8px; border-radius: 50%; background: #2E3F57; margin: 0 auto 10px"></div>
+<div style="overflow-x: auto; width: 100%"><div id="demo-slot" style="min-width: 980px; min-height: 760px"></div></div>
+</div>
+<div style="width: 104%; height: 22px; background: #C9D1DC; border-radius: 0 0 22px 22px"><div style="width: 140px; height: 8px; background: #AEB8C6; border-radius: 0 0 10px 10px; margin: 0 auto"></div></div>
+</div>
+<span style="font-size: 13px; color: #5A6B82; text-align: center">Dados ilustrativos de demonstração.</span>
+</div>
+</section>
+
+<!-- EQUIPE + MÃO DE OBRA -->
+<section id="equipe" style="background: #FFFFFF; padding: 96px 0; border-bottom: 1px solid #E1E7EF; overflow: hidden">
+<div class="g2" style="max-width: 1200px; margin: 0 auto; padding: 0 32px; gap: 64px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 22px">
+<span style="font-size: 15px; font-weight: 600; color: #137F79">Gestão da equipe</span>
+<h2 style="margin: 0; font-family: Montserrat, sans-serif; font-weight: 800; font-size: 42px; line-height: 1.12; letter-spacing: -1px">Recepção sobrecarregada? A IA cobre a fila. Sua equipe cuida do paciente.</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #4A5C74">Contratar e treinar recepcionista virou um dos maiores gargalos das clínicas. A Raise Clínica assume as perguntas repetitivas e você acompanha, pelo celular, a agenda e o desempenho de cada pessoa.</p>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 16px; line-height: 1.5">
+<li>✓ <b>Ocupação da agenda</b> por profissional e por dia</li>
+<li>✓ <b>Comparecimento e conversão</b> de avaliação em tratamento</li>
+<li>✓ <b>Desempenho da recepção, CRC e consultoras</b>, lado a lado com a IA</li>
+<li>✓ <b>Alerta</b> quando alguém sai do ritmo, com caminhos para agir</li>
+</ul>
+</div>
+<div style="display: flex; justify-content: center">
+<div style="width: 270px; background: #0B1422; border-radius: 40px; padding: 11px; box-shadow: 0 30px 60px rgba(29,48,78,0.28)">
+<div style="background: #FFFFFF; border-radius: 30px; overflow: hidden; display: flex; flex-direction: column">
+<div style="background: #1D304E; padding: 28px 16px 16px; display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 11px; color: #B5C2D6">Agenda da semana</span>
+<span style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 24px; color: #FFFFFF">82% ocupada</span>
+<div style="height: 8px; background: #2E4866; border-radius: 999px; overflow: hidden"><div style="width: 82%; height: 100%; background: #3CC7BE; border-radius: 999px"></div></div>
+<span style="font-size: 11px; color: #CDEDEA">212 de 260 horários · 118 agendados pela IA</span>
+</div>
+<div style="padding: 14px 16px 18px; display: flex; flex-direction: column; gap: 11px">
+<svg viewBox="0 0 230 70" width="100%" height="70" role="img" aria-label="Gráfico de barras com faltas semanais caindo">
+<rect x="6" y="10" width="34" height="60" rx="4" fill="#F4C7C1"></rect>
+<rect x="52" y="22" width="34" height="48" rx="4" fill="#F4C7C1"></rect>
+<rect x="98" y="34" width="34" height="36" rx="4" fill="#C9D3E3"></rect>
+<rect x="144" y="44" width="34" height="26" rx="4" fill="#C9D3E3"></rect>
+<rect x="190" y="50" width="34" height="20" rx="4" fill="#1EA9A1"></rect>
+</svg>
+<span style="font-size: 11px; color: #5A6B82">Faltas por semana após a confirmação automática</span>
+<div style="display: flex; justify-content: space-between; font-size: 12px"><span style="font-weight: 700">Dra. Beatriz</span><span style="color: #0E6B66; font-weight: 700">91% ocupada</span></div>
+<div style="display: flex; justify-content: space-between; font-size: 12px"><span style="font-weight: 700">Dr. Rafael</span><span style="color: #0E6B66; font-weight: 700">41% aprovação</span></div>
+<div style="display: flex; justify-content: space-between; font-size: 12px"><span style="font-weight: 700">Recepção</span><span style="color: #B42318; font-weight: 700">63 retornos</span></div>
+<div style="display: flex; justify-content: space-between; font-size: 12px"><span style="font-weight: 700">Assistente IA</span><span style="color: #0E6B66; font-weight: 700">118 consultas</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p style="max-width: 1200px; margin: 20px auto 0; padding: 0 32px; font-size: 13px; color: #5A6B82">Dados ilustrativos.</p>
+</section>
+
+<!-- PLANOS -->
+<section id="planos" style="padding: 96px 0">
+<div style="max-width: 1200px; margin: 0 auto; padding: 0 32px; display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 760px">
+<span style="font-size: 15px; font-weight: 600; color: #137F79">Planos</span>
+<h2 style="margin: 0; font-family: Montserrat, sans-serif; font-weight: 800; font-size: 42px; line-height: 1.12; letter-spacing: -1px">Escolha pelo momento da sua clínica.</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #4A5C74">O valor acompanha o volume de conversas, o número de profissionais e de unidades. Fale com a gente e receba uma proposta para a sua clínica.</p>
+</div>
+<div class="g3">
+<div style="background: #FFFFFF; border: 1px solid #E1E7EF; border-radius: 22px; padding: 30px; display: flex; flex-direction: column; gap: 16px">
+<span style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 24px">Essencial</span>
+<span style="font-size: 15px; color: #4A5C74">Organizar atendimento e agenda</span>
+<span style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 20px">Valor sob consulta</span>
+<div style="display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 1.5; border-top: 1px solid #E6EBF2; padding-top: 16px"><span>✓ Assistente IA no WhatsApp</span><span>✓ Funil de pacientes</span><span>✓ Confirmação de consultas</span></div>
+<a href="#contato" style="margin-top: auto; text-align: center; border: 1px solid #1D304E; color: #1D304E; text-decoration: none; font-weight: 700; font-size: 15px; padding: 14px; border-radius: 999px; min-height: 48px; box-sizing: border-box">Solicitar proposta</a>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #E1E7EF; border-radius: 22px; padding: 30px; display: flex; flex-direction: column; gap: 16px">
+<span style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 24px">Pro</span>
+<span style="font-size: 15px; color: #4A5C74">Trazer o paciente de volta</span>
+<span style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 20px">Valor sob consulta</span>
+<div style="display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 1.5; border-top: 1px solid #E6EBF2; padding-top: 16px"><span>✓ Tudo do Essencial</span><span>✓ Recall, retorno e reativação</span><span>✓ Gestão da equipe no celular</span><span>✓ Do caminho à ação</span></div>
+<a href="#contato" style="margin-top: auto; text-align: center; border: 1px solid #1D304E; color: #1D304E; text-decoration: none; font-weight: 700; font-size: 15px; padding: 14px; border-radius: 999px; min-height: 48px; box-sizing: border-box">Solicitar proposta</a>
+</div>
+<div style="background: #0F1B2E; border-radius: 22px; padding: 30px; display: flex; flex-direction: column; gap: 16px">
+<span style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 24px; color: #FFFFFF">Inteligência</span>
+<span style="font-size: 15px; color: #C9D3E3">Decidir com dados, toda semana</span>
+<span style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 20px; color: #FFFFFF">Valor sob consulta</span>
+<div style="display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 1.5; border-top: 1px solid #22385A; padding-top: 16px; color: #E2E8F2"><span>✓ Tudo do Pro</span><span>✓ Conselheiro e leitura da semana</span><span>✓ Resultado por campanha, do anúncio ao faturamento</span><span>✓ Acompanhamento estratégico opcional</span></div>
+<a href="#contato" style="margin-top: auto; text-align: center; background: #1EA9A1; color: #0B1A2E; text-decoration: none; font-weight: 800; font-size: 15px; padding: 14px; border-radius: 999px; min-height: 48px; box-sizing: border-box">Agendar demonstração</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ORIGEM + FAQ -->
+<section style="background: #FFFFFF; padding: 96px 0; border-top: 1px solid #E1E7EF">
+<div class="g2" style="max-width: 1200px; margin: 0 auto; padding: 0 32px; gap: 64px; align-items: start">
+<div style="display: flex; flex-direction: column; gap: 20px">
+<h2 style="margin: 0; font-family: Montserrat, sans-serif; font-weight: 800; font-size: 36px; line-height: 1.15; letter-spacing: -1px">Nasceu dentro de uma clínica em operação.</h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.65; color: #4A5C74">A Raise Clínica foi construída e é usada no dia a dia de uma clínica real. O Conselheiro carrega a metodologia da Raise Growth &amp; IA, consultoria com mais de 19 anos em growth e revenue.</p>
+<div style="background: #1D304E; border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 6px; max-width: 360px"><span style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 38px; color: #3CC7BE">8,3x</span><span style="font-size: 15px; line-height: 1.5; color: #E2E8F2">faturamento da Clínica Feminine em 6 meses com o método Raise</span></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<details style="background: #F4F6FA; border-radius: 16px; padding: 20px 24px"><summary style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 17px">A IA dá diagnóstico ou orientação clínica?</summary><p style="margin: 12px 0 0; font-size: 15px; line-height: 1.6; color: #4A5C74">Não. Ela acolhe, agenda e organiza. Qualquer dúvida clínica, urgência ou caso sensível é encaminhado para a equipe com o resumo da conversa.</p></details>
+<details style="background: #F4F6FA; border-radius: 16px; padding: 20px 24px"><summary style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 17px">E os dados dos pacientes?</summary><p style="margin: 12px 0 0; font-size: 15px; line-height: 1.6; color: #4A5C74">São da clínica e tratados conforme a LGPD, com acesso por perfil na equipe. Comparações com outras clínicas usam apenas dados anonimizados e agregados, com consentimento em contrato.</p></details>
+<details style="background: #F4F6FA; border-radius: 16px; padding: 20px 24px"><summary style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 17px">Funciona com convênio e particular?</summary><p style="margin: 12px 0 0; font-size: 15px; line-height: 1.6; color: #4A5C74">Sim. A assistente identifica o tipo de atendimento, informa os convênios aceitos e direciona para a agenda certa.</p></details>
+<details style="background: #F4F6FA; border-radius: 16px; padding: 20px 24px"><summary style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 17px">Posso decidir se a IA informa valores?</summary><p style="margin: 12px 0 0; font-size: 15px; line-height: 1.6; color: #4A5C74">Pode. Ela informa valores, dá faixas ou explica que o valor é definido na avaliação, conforme a regra da sua clínica.</p></details>
+<details style="background: #F4F6FA; border-radius: 16px; padding: 20px 24px"><summary style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 17px">Atende vários profissionais e unidades?</summary><p style="margin: 12px 0 0; font-size: 15px; line-height: 1.6; color: #4A5C74">Sim. A agenda, os indicadores e a gestão da equipe são separados por profissional e por unidade.</p></details>
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section id="contato" style="background: #0F1B2E; padding: 96px 0">
+<div class="g2" style="max-width: 1200px; margin: 0 auto; padding: 0 32px; gap: 56px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<h2 style="margin: 0; font-family: Montserrat, sans-serif; font-weight: 800; font-size: 44px; line-height: 1.08; letter-spacing: -1.2px; color: #FFFFFF">Mais pacientes na cadeira, menos horários vazios.</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #C9D3E3">Em 30 minutos mostramos a Raise Clínica com o cenário da sua especialidade e o que o Conselheiro leria nos seus números.</p>
+<div style="display: flex; flex-direction: column; gap: 10px; font-size: 16px">
+<a href="{{c.waHref}}" target="_blank" rel="noopener" style="color: #3CC7BE; font-weight: 700">WhatsApp: (31) 99147-4373</a>
+<a href="{{c.mailHref}}" style="color: #3CC7BE; font-weight: 700">E-mail: inteligencia.raise@gmail.com</a>
+</div>
+</div>
+<form data-role="leadForm" style="background: #FFFFFF; border-radius: 20px; padding: 30px; display: flex; flex-direction: column; gap: 14px" aria-label="Agendar demonstração">
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">Nome<input type="text" name="nome" style="font: inherit; font-weight: 400; padding: 12px 16px; border: 1px solid #C7D1DE; border-radius: 999px; min-height: 46px; box-sizing: border-box"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">Clínica<input type="text" name="empresa" style="font: inherit; font-weight: 400; padding: 12px 16px; border: 1px solid #C7D1DE; border-radius: 999px; min-height: 46px; box-sizing: border-box"></label>
+<div class="g2" style="gap: 14px">
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">WhatsApp<input type="tel" name="whatsapp" style="font: inherit; font-weight: 400; padding: 12px 16px; border: 1px solid #C7D1DE; border-radius: 999px; min-height: 46px; box-sizing: border-box"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">Especialidade<select name="segmento" style="font: inherit; font-weight: 400; padding: 12px 16px; border: 1px solid #C7D1DE; border-radius: 999px; min-height: 46px; box-sizing: border-box; background: #FFFFFF"><option>Estética</option><option>Odontologia</option><option>Clínica médica</option><option>Outra</option></select></label>
+</div>
+<a data-role="formWa" href="{{c.formWa}}" target="_blank" rel="noopener" style="margin-top: 4px; text-align: center; text-decoration: none; font-weight: 800; font-size: 16px; background: #1EA9A1; color: #0B1A2E; border-radius: 999px; padding: 16px; min-height: 52px; box-sizing: border-box">Enviar pelo WhatsApp</a>
+<a data-role="formMail" href="{{c.formMail}}" style="text-align: center; text-decoration: none; font-weight: 700; font-size: 15px; color: #1D304E; border: 1px solid #C7D1DE; border-radius: 999px; padding: 14px; min-height: 48px; box-sizing: border-box">Prefiro enviar por e-mail</a>
+<span style="font-size: 13px; color: #5A6B82">A mensagem já vai identificada como contato do site da Raise Clínica.</span>
+</form>
+</div>
+</section>
+
+<footer style="background: #0B1422; padding: 34px 0">
+<div style="max-width: 1200px; margin: 0 auto; padding: 0 32px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px">
+<div style="display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap">
+<span style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 20px; color: #FFFFFF">raise</span>
+<span style="font-family: Montserrat, sans-serif; font-weight: 600; font-size: 20px; color: #3CC7BE">clínica</span>
+<span style="font-size: 14px; color: #9FB0C8; margin-left: 10px">Uma solução Raise Tech · Grupo Raise</span>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px 24px; font-size: 14px">
+<a href="/tech/" style="color: #9FB0C8">Raise Tech</a>
+<a href="{{c.waHref}}" target="_blank" rel="noopener" style="color: #9FB0C8">WhatsApp (31) 99147-4373</a>
+<a href="{{c.mailHref}}" style="color: #9FB0C8">inteligencia.raise@gmail.com</a>
+</div>
+</div>
+</footer>
+</div>
+</template>
+<template id="tpl-demo">
+<div style="width: 100%; height: 760px; display: flex; font-family: Inter, system-ui, sans-serif; color: #1D304E; background: #FFFFFF; border-radius: 18px; overflow: hidden; border: 1px solid #D5DDE8; box-shadow: 0 24px 60px rgba(15,27,46,0.18); box-sizing: border-box">
+
+<!-- SIDEBAR -->
+<aside style="width: 224px; flex-shrink: 0; background: #0F1B2E; padding: 22px 16px; display: flex; flex-direction: column; gap: 22px; box-sizing: border-box">
+<div style="display: flex; align-items: baseline; gap: 5px; padding: 0 6px">
+<span style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 21px; color: #FFFFFF">raise</span>
+<span style="font-family: Montserrat, sans-serif; font-weight: 600; font-size: 21px; color: #3CC7BE">clínica</span>
+</div>
+<div style="display: flex; flex-direction: column; background: #1D304E; border-radius: 10px; padding: 4px; gap: 4px" role="group" aria-label="Especialidade">
+<sc-for list="{{specs}}" as="sp" hint-placeholder-count="3">
+<sc-if value="{{sp.active}}" hint-placeholder-val="{{ false }}"><button class="dbtn" type="button" aria-pressed="true" style="text-align: left; background: #1EA9A1; color: #0B1A2E; font-weight: 700; font-size: 13px; padding: 9px 12px; border-radius: 8px; min-height: 38px">{{sp.label}}</button></sc-if>
+<sc-if value="{{sp.inactive}}" hint-placeholder-val="{{ true }}"><button class="dbtn" type="button" aria-pressed="false" onClick="{{sp.pick}}" style="text-align: left; background: transparent; color: #C9D3E3; font-weight: 600; font-size: 13px; padding: 9px 12px; border-radius: 8px; min-height: 38px">{{sp.label}}</button></sc-if>
+</sc-for>
+</div>
+<nav style="display: flex; flex-direction: column; gap: 4px" aria-label="Telas da plataforma">
+<sc-for list="{{nav}}" as="n" hint-placeholder-count="5">
+<sc-if value="{{n.active}}" hint-placeholder-val="{{ false }}">
+<button class="dbtn" type="button" aria-current="page" style="display: flex; align-items: center; gap: 10px; background: #1D304E; color: #FFFFFF; font-weight: 600; font-size: 14px; padding: 11px 12px; border-radius: 9px; min-height: 44px; border-left: 3px solid #1EA9A1">{{n.label}}<sc-if value="{{n.isAi}}" hint-placeholder-val="{{ false }}"><span style="margin-left: auto; font-size: 10px; font-weight: 800; color: #0B1A2E; background: #3CC7BE; padding: 2px 6px; border-radius: 6px">IA</span></sc-if></button>
+</sc-if>
+<sc-if value="{{n.inactive}}" hint-placeholder-val="{{ true }}">
+<button class="dbtn" type="button" onClick="{{n.go}}" style="display: flex; align-items: center; gap: 10px; background: transparent; color: #B5C2D6; font-weight: 500; font-size: 14px; padding: 11px 12px; border-radius: 9px; min-height: 44px; border-left: 3px solid transparent">{{n.label}}<sc-if value="{{n.isAi}}" hint-placeholder-val="{{ false }}"><span style="margin-left: auto; font-size: 10px; font-weight: 800; color: #0B1A2E; background: #3CC7BE; padding: 2px 6px; border-radius: 6px">IA</span></sc-if></button>
+</sc-if>
+</sc-for>
+</nav>
+<div style="margin-top: auto; background: #1D304E; border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 12px; font-weight: 700; color: #3CC7BE">Conselheiro ativo</span>
+<span style="font-size: 12px; line-height: 1.45; color: #B5C2D6">Próxima leitura da semana: segunda, 8h</span>
+</div>
+<span style="font-size: 11px; color: #8899B2; padding: 0 6px">Dados ilustrativos de demonstração</span>
+</aside>
+
+<!-- MAIN -->
+<main style="flex: 1; min-width: 0; display: flex; flex-direction: column; background: #F4F6FA">
+<div style="height: 66px; flex-shrink: 0; background: #FFFFFF; border-bottom: 1px solid #E1E7EF; display: flex; align-items: center; justify-content: space-between; padding: 0 26px; gap: 16px">
+<div style="display: flex; flex-direction: column">
+<span style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 19px">{{screenTitle}}</span>
+<span style="font-size: 12px; color: #5A6B82">{{d.biz}} · {{d.period}}</span>
+</div>
+<div style="display: flex; align-items: center; gap: 10px">
+<span style="font-size: 12px; font-weight: 600; color: #0E6B66; background: #E3F5F4; padding: 6px 10px; border-radius: 999px">WhatsApp oficial conectado</span>
+<span style="width: 34px; height: 34px; border-radius: 50%; background: #1D304E; color: #FFFFFF; font-size: 13px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center" aria-hidden="true">{{d.initials}}</span>
+</div>
+</div>
+
+<div style="flex: 1; min-height: 0; overflow: auto; padding: 22px 26px; box-sizing: border-box">
+
+<!-- PAINEL -->
+<sc-if value="{{isPainel}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px">
+<sc-for list="{{d.kpis}}" as="k" hint-placeholder-count="4">
+<div style="background: #FFFFFF; border: 1px solid #E1E7EF; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 12px; color: #5A6B82; font-weight: 600">{{k.label}}</span>
+<span style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 26px">{{k.value}}</span>
+<sc-if value="{{k.good}}" hint-placeholder-val="{{ true }}"><span style="font-size: 12px; font-weight: 600; color: #0E6B66">{{k.delta}}</span></sc-if>
+<sc-if value="{{k.bad}}" hint-placeholder-val="{{ false }}"><span style="font-size: 12px; font-weight: 700; color: #B42318">{{k.delta}}</span></sc-if>
+</div>
+</sc-for>
+</div>
+<div style="display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 16px">
+<div style="background: #FFFFFF; border: 1px solid #E1E7EF; border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 12px">
+<span style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 15px">Alertas que pedem ação</span>
+<sc-for list="{{d.alerts}}" as="a" hint-placeholder-count="3">
+<div style="display: flex; gap: 12px; align-items: flex-start; padding: 12px; border-radius: 10px; background: #F8FAFC; border: 1px solid #EDF1F6">
+<sc-if value="{{a.high}}" hint-placeholder-val="{{ true }}"><span style="font-size: 11px; font-weight: 800; color: #B42318; background: #FDECEA; padding: 4px 8px; border-radius: 6px; flex-shrink: 0">ALTA</span></sc-if>
+<sc-if value="{{a.mid}}" hint-placeholder-val="{{ false }}"><span style="font-size: 11px; font-weight: 800; color: #8A4B00; background: #FFF1DC; padding: 4px 8px; border-radius: 6px; flex-shrink: 0">MÉDIA</span></sc-if>
+<div style="display: flex; flex-direction: column; gap: 3px">
+<span style="font-size: 14px; font-weight: 600">{{a.title}}</span>
+<span style="font-size: 13px; color: #5A6B82; line-height: 1.45">{{a.detail}}</span>
+</div>
+</div>
+</sc-for>
+</div>
+<div style="display: flex; flex-direction: column; gap: 16px">
+<div style="background: #FFFFFF; border: 1px solid #E1E7EF; border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 12px">
+<span style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 15px">{{d.chartTitle}}</span>
+<div style="display: flex; align-items: flex-end; gap: 14px; height: 110px; border-bottom: 1px solid #E1E7EF; padding: 0 4px">
+<sc-for list="{{d.bars}}" as="b" hint-placeholder-count="4">
+<div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; justify-content: flex-end; height: 100%">
+<span style="font-size: 12px; font-weight: 700">{{b.v}}%</span>
+<div style="width: 100%; max-width: 46px; border-radius: 6px 6px 0 0; background: {{b.color}}; height: {{b.h}}px"></div>
+</div>
+</sc-for>
+</div>
+<div style="display: flex; gap: 14px; padding: 0 4px">
+<sc-for list="{{d.bars}}" as="b" hint-placeholder-count="4"><span style="flex: 1; text-align: center; font-size: 11px; color: #5A6B82">{{b.label}}</span></sc-for>
+</div>
+</div>
+<div style="background: #0F1B2E; border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 12px; font-weight: 700; color: #3CC7BE; text-transform: uppercase; letter-spacing: 0.6px">Leitura da semana pronta</span>
+<span style="font-size: 14px; line-height: 1.5; color: #FFFFFF">{{d.teaser}}</span>
+<button class="dbtn" type="button" onClick="{{goLeitura}}" style="align-self: flex-start; background: #1EA9A1; color: #0B1A2E; font-weight: 700; font-size: 13px; padding: 10px 14px; border-radius: 8px; min-height: 40px">Abrir leitura →</button>
+</div>
+</div>
+</div>
+</div>
+</sc-if>
+
+<!-- CONVERSAS -->
+<sc-if value="{{isConversas}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; gap: 14px; height: 650px">
+<div style="width: 250px; flex-shrink: 0; background: #FFFFFF; border: 1px solid #E1E7EF; border-radius: 14px; overflow: auto; display: flex; flex-direction: column">
+<div style="padding: 14px 16px; border-bottom: 1px solid #E1E7EF; font-size: 13px; font-weight: 700">Caixa de entrada · {{d.inboxCount}}</div>
+<sc-for list="{{d.inbox}}" as="c" hint-placeholder-count="5">
+<sc-if value="{{c.active}}" hint-placeholder-val="{{ false }}">
+<div style="padding: 13px 16px; background: #E3F5F4; border-left: 3px solid #1EA9A1; display: flex; flex-direction: column; gap: 4px">
+<div style="display: flex; justify-content: space-between; gap: 8px"><span style="font-size: 14px; font-weight: 700">{{c.name}}</span><span style="font-size: 11px; color: #5A6B82">{{c.time}}</span></div>
+<span style="font-size: 12px; color: #3E5068">{{c.topic}}</span>
+<span style="align-self: flex-start; font-size: 11px; font-weight: 700; color: #0E6B66">● {{c.status}}</span>
+</div>
+</sc-if>
+<sc-if value="{{c.inactive}}" hint-placeholder-val="{{ true }}">
+<div style="padding: 13px 16px; border-left: 3px solid transparent; border-bottom: 1px solid #F0F3F7; display: flex; flex-direction: column; gap: 4px">
+<div style="display: flex; justify-content: space-between; gap: 8px"><span style="font-size: 14px; font-weight: 600">{{c.name}}</span><span style="font-size: 11px; color: #5A6B82">{{c.time}}</span></div>
+<span style="font-size: 12px; color: #5A6B82">{{c.topic}}</span>
+<span style="align-self: flex-start; font-size: 11px; font-weight: 600; color: #4E5C96">{{c.status}}</span>
+</div>
+</sc-if>
+</sc-for>
+</div>
+<div style="flex: 1; min-width: 0; background: #FFFFFF; border: 1px solid #E1E7EF; border-radius: 14px; display: flex; flex-direction: column; overflow: hidden">
+<div style="padding: 14px 18px; border-bottom: 1px solid #E1E7EF; display: flex; justify-content: space-between; align-items: center; gap: 10px">
+<div style="display: flex; flex-direction: column"><span style="font-size: 15px; font-weight: 700">{{d.chatName}}</span><span style="font-size: 12px; color: #5A6B82">{{d.chatSub}}</span></div>
+<span style="font-size: 12px; font-weight: 700; color: #0B1A2E; background: #3CC7BE; padding: 5px 10px; border-radius: 999px">IA atendendo</span>
+</div>
+<div style="flex: 1; overflow: auto; padding: 18px; display: flex; flex-direction: column; gap: 12px; background: #F8FAFC">
+<sc-for list="{{d.chat}}" as="m" hint-placeholder-count="5">
+<sc-if value="{{m.ia}}" hint-placeholder-val="{{ false }}">
+<div style="align-self: flex-end; max-width: 80%; background: #1D304E; color: #FFFFFF; border-radius: 14px 14px 4px 14px; padding: 11px 14px; display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 11px; font-weight: 700; color: #3CC7BE">{{d.agentName}}</span>
+<span style="font-size: 14px; line-height: 1.5">{{m.text}}</span>
+<span style="font-size: 10px; color: #9FB0C8; align-self: flex-end">{{m.time}}</span>
+</div>
+</sc-if>
+<sc-if value="{{m.lead}}" hint-placeholder-val="{{ true }}">
+<div style="align-self: flex-start; max-width: 80%; background: #FFFFFF; border: 1px solid #E1E7EF; border-radius: 14px 14px 14px 4px; padding: 11px 14px; display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 14px; line-height: 1.5">{{m.text}}</span>
+<span style="font-size: 10px; color: #5A6B82; align-self: flex-end">{{m.time}}</span>
+</div>
+</sc-if>
+</sc-for>
+</div>
+<div style="padding: 12px 16px; border-top: 1px solid #E1E7EF; display: flex; gap: 10px; align-items: center">
+<span style="flex: 1; font-size: 13px; color: #5A6B82; background: #F4F6FA; border-radius: 10px; padding: 11px 14px">A equipe pode assumir a conversa a qualquer momento</span>
+<button class="dbtn" type="button" style="background: #1D304E; color: #FFFFFF; font-weight: 700; font-size: 13px; padding: 11px 14px; border-radius: 10px; min-height: 44px">Assumir</button>
+</div>
+</div>
+<div style="width: 236px; flex-shrink: 0; display: flex; flex-direction: column; gap: 12px">
+<div style="background: #0F1B2E; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+<span style="font-size: 12px; font-weight: 700; color: #3CC7BE; text-transform: uppercase; letter-spacing: 0.6px">Leitura da conversa</span>
+<sc-for list="{{d.insights}}" as="i" hint-placeholder-count="4">
+<div style="display: flex; flex-direction: column; gap: 3px">
+<span style="font-size: 11px; font-weight: 700; color: #9FB0C8; text-transform: uppercase">{{i.label}}</span>
+<span style="font-size: 13px; line-height: 1.45; color: #FFFFFF">{{i.text}}</span>
+</div>
+</sc-for>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #E1E7EF; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 12px; font-weight: 700; color: #5A6B82">Etapa no funil</span>
+<span style="font-size: 14px; font-weight: 700">{{d.chatStage}}</span>
+<span style="font-size: 12px; color: #5A6B82">{{d.chatValue}}</span>
+</div>
+</div>
+</div>
+</sc-if>
+
+<!-- FUNIL -->
+<sc-if value="{{isFunil}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; gap: 10px; flex-wrap: wrap">
+<sc-for list="{{d.funnelStats}}" as="f" hint-placeholder-count="3">
+<span style="font-size: 13px; background: #FFFFFF; border: 1px solid #E1E7EF; border-radius: 999px; padding: 7px 12px"><b>{{f.v}}</b> {{f.l}}</span>
+</sc-for>
+</div>
+<div style="display: grid; grid-template-columns: repeat(5, minmax(150px, 1fr)); gap: 12px; overflow-x: auto">
+<sc-for list="{{d.stages}}" as="s" hint-placeholder-count="5">
+<div style="background: #EAEFF5; border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 10px; min-height: 520px">
+<div style="display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 13px; font-weight: 700">{{s.name}}</span>
+<span style="font-size: 12px; color: #5A6B82">{{s.total}}</span>
+</div>
+<sc-for list="{{s.cards}}" as="c" hint-placeholder-count="2">
+<div style="background: #FFFFFF; border-radius: 10px; padding: 12px; display: flex; flex-direction: column; gap: 6px; box-shadow: 0 1px 2px rgba(15,27,46,0.08)">
+<span style="font-size: 13px; font-weight: 700">{{c.name}}</span>
+<span style="font-size: 12px; color: #3E5068">{{c.meta}}</span>
+<span style="font-size: 11px; color: #0E6B66; font-weight: 600">→ {{c.next}}</span>
+<sc-if value="{{c.warn}}" hint-placeholder-val="{{ false }}"><span style="font-size: 11px; font-weight: 700; color: #B42318; background: #FDECEA; padding: 3px 7px; border-radius: 6px; align-self: flex-start">{{c.warn}}</span></sc-if>
+</div>
+</sc-for>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<!-- EQUIPE -->
+<sc-if value="{{isEquipe}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 16px">
+<div style="background: #1D304E; border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 12px; color: #B5C2D6; font-weight: 600">Meta do mês</span>
+<span style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 24px; color: #FFFFFF">{{d.teamGoal}}</span>
+<div style="height: 10px; background: #2E4866; border-radius: 999px; overflow: hidden"><div style="height: 100%; background: #3CC7BE; border-radius: 999px; width: {{d.teamPct}}%"></div></div>
+<span style="font-size: 12px; color: #CDEDEA">{{d.teamPct}}% · {{d.teamNote}}</span>
+<div style="display: flex; flex-direction: column; gap: 8px; margin-top: 6px; border-top: 1px solid #2E4866; padding-top: 12px">
+<sc-for list="{{d.split}}" as="x" hint-placeholder-count="3">
+<div style="display: flex; justify-content: space-between; font-size: 13px"><span style="color: #C9D3E3">{{x.l}}</span><span style="color: #FFFFFF; font-weight: 700">{{x.v}}</span></div>
+</sc-for>
+</div>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #E1E7EF; border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 10px">
+<span style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 15px">{{d.weeklyLabel}}</span>
+<div style="display: flex; gap: 12px; font-size: 11px; color: #5A6B82"><span><span style="color: #1D304E" aria-hidden="true">■</span> Time</span><span><span style="color: #1EA9A1" aria-hidden="true">■</span> IA</span></div>
+</div>
+<div style="display: flex; align-items: flex-end; gap: 22px; height: 180px; border-bottom: 1px solid #E1E7EF; padding: 0 10px">
+<sc-for list="{{d.weekly}}" as="w" hint-placeholder-count="4">
+<div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; gap: 4px">
+<span style="font-size: 12px; font-weight: 700">{{w.total}}</span>
+<div style="width: 100%; max-width: 56px; display: flex; flex-direction: column">
+<div style="background: #1EA9A1; border-radius: 6px 6px 0 0; height: {{w.iaH}}px"></div>
+<div style="background: #1D304E; height: {{w.teamH}}px"></div>
+</div>
+</div>
+</sc-for>
+</div>
+<div style="display: flex; gap: 22px; padding: 0 10px">
+<sc-for list="{{d.weekly}}" as="w" hint-placeholder-count="4"><span style="flex: 1; text-align: center; font-size: 11px; color: #5A6B82">{{w.label}}</span></sc-for>
+</div>
+</div>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #E1E7EF; border-radius: 14px; overflow: hidden">
+<div style="display: grid; grid-template-columns: minmax(0, 1.6fr) repeat(4, minmax(0, 1fr)); gap: 12px; padding: 12px 18px; background: #F8FAFC; font-size: 11px; font-weight: 700; color: #5A6B82; text-transform: uppercase; letter-spacing: 0.4px">
+<sc-for list="{{d.teamCols}}" as="col" hint-placeholder-count="5"><span>{{col}}</span></sc-for>
+</div>
+<sc-for list="{{d.team}}" as="t" hint-placeholder-count="4">
+<div style="display: grid; grid-template-columns: minmax(0, 1.6fr) repeat(4, minmax(0, 1fr)); gap: 12px; padding: 12px 18px; border-top: 1px solid #EDF1F6; align-items: center; font-size: 13px">
+<div style="display: flex; flex-direction: column; gap: 2px">
+<span style="font-weight: 700">{{t.name}}</span>
+<span style="font-size: 11px; color: #5A6B82">{{t.role}}</span>
+<sc-if value="{{t.alertOn}}" hint-placeholder-val="{{ false }}"><span style="font-size: 11px; font-weight: 700; color: #B42318">{{t.alert}}</span></sc-if>
+</div>
+<span style="font-weight: 600">{{t.vendas}}</span>
+<sc-if value="{{t.hasMeta}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 4px"><span style="font-weight: 700">{{t.meta}}%</span><div style="height: 6px; background: #EEF1F5; border-radius: 999px"><div style="height: 100%; border-radius: 999px; width: {{t.meta}}%; background: {{t.barColor}}"></div></div></div>
+</sc-if>
+<sc-if value="{{t.noMeta}}" hint-placeholder-val="{{ false }}"><span style="font-size: 11px; font-weight: 800; color: #0B1A2E; background: #3CC7BE; padding: 3px 7px; border-radius: 6px; justify-self: start">IA 24h</span></sc-if>
+<span>{{t.conv}}</span>
+<span>{{t.resp}}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<!-- LEITURA -->
+<sc-if value="{{isLeitura}}" hint-placeholder-val="{{ false }}">
+<div style="display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="background: #FFFFFF; border: 1px solid #E1E7EF; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 12px; font-weight: 700; color: #5A6B82; text-transform: uppercase; letter-spacing: 0.6px">1 · O que está acontecendo</span>
+<span style="font-size: 16px; line-height: 1.55; font-weight: 500">{{d.what}}</span>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #E1E7EF; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 12px; font-weight: 700; color: #5A6B82; text-transform: uppercase; letter-spacing: 0.6px">2 · Por que provavelmente está acontecendo</span>
+<sc-for list="{{d.why}}" as="w" hint-placeholder-count="3">
+<div style="display: flex; gap: 10px; align-items: flex-start"><span style="color: #137F79; font-weight: 800" aria-hidden="true">•</span><span style="font-size: 14px; line-height: 1.5">{{w.t}}</span></div>
+</sc-for>
+</div>
+<div style="background: #F0FAF9; border: 1px solid #BFE6E3; border-radius: 14px; padding: 16px 20px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 12px; font-weight: 700; color: #0E6B66; text-transform: uppercase; letter-spacing: 0.6px">5 · Como medir</span>
+<span style="font-size: 14px; line-height: 1.5">{{d.medir}}</span>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<span style="font-size: 12px; font-weight: 700; color: #5A6B82; text-transform: uppercase; letter-spacing: 0.6px">3 · Prioridades da semana</span>
+<sc-for list="{{d.priorities}}" as="p" hint-placeholder-count="3">
+<div style="background: #FFFFFF; border: 1px solid #E1E7EF; border-radius: 14px; padding: 16px; display: flex; gap: 14px; align-items: flex-start">
+<span style="width: 30px; height: 30px; border-radius: 8px; background: #1D304E; color: #FFFFFF; font-family: Montserrat, sans-serif; font-weight: 800; font-size: 14px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0">{{p.n}}</span>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 14px; font-weight: 600; line-height: 1.45">{{p.title}}</span>
+<div style="display: flex; flex-wrap: wrap; gap: 6px">
+<span style="font-size: 11px; font-weight: 600; background: #E3F5F4; color: #0E6B66; padding: 3px 8px; border-radius: 6px">Impacto {{p.impacto}}</span>
+<span style="font-size: 11px; font-weight: 600; background: #EEF0F8; color: #3D4A7E; padding: 3px 8px; border-radius: 6px">Esforço {{p.esforco}}</span>
+<span style="font-size: 11px; font-weight: 600; background: #F4F6FA; color: #3E5068; padding: 3px 8px; border-radius: 6px">{{p.prazo}}</span>
+</div>
+</div>
+</div>
+</sc-for>
+<div style="background: #FFFFFF; border: 1px dashed #C7D1DE; border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 12px; font-weight: 700; color: #5A6B82">4 · De onde vêm os argumentos</span>
+<span style="font-size: 13px; line-height: 1.45; color: #3E5068">{{d.fontes}}</span>
+</div>
+<button class="dbtn" type="button" onClick="{{goConselheiro}}" style="align-self: flex-start; background: #1D304E; color: #FFFFFF; font-weight: 700; font-size: 14px; padding: 12px 16px; border-radius: 10px; min-height: 44px">Discutir com o Conselheiro →</button>
+</div>
+</div>
+</sc-if>
+
+<!-- CONSELHEIRO -->
+<sc-if value="{{isConselheiro}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="align-self: flex-end; max-width: 70%; background: #FFFFFF; border: 1px solid #E1E7EF; border-radius: 14px 14px 4px 14px; padding: 12px 16px; display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 11px; font-weight: 700; color: #5A6B82">Você perguntou</span>
+<span style="font-size: 15px; font-weight: 600">{{d.question}}</span>
+</div>
+<div style="background: #0F1B2E; border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 12px; font-weight: 700; color: #3CC7BE">Conselheiro Raise</span>
+<span style="font-size: 15px; line-height: 1.55; color: #FFFFFF">{{d.answer}}</span>
+</div>
+<span style="font-size: 12px; font-weight: 700; color: #5A6B82; text-transform: uppercase; letter-spacing: 0.6px">Caminhos possíveis · escolha um para transformar em ação</span>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px">
+<sc-for list="{{paths}}" as="p" hint-placeholder-count="3">
+<div style="background: #FFFFFF; border: 1px solid #E1E7EF; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 8px">
+<span style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 18px; color: #137F79">{{p.id}}</span>
+<span style="font-size: 11px; font-weight: 700; color: #3E5068; background: #F4F6FA; padding: 3px 8px; border-radius: 6px">Confiança {{p.confianca}}</span>
+</div>
+<span style="font-size: 15px; font-weight: 700; line-height: 1.35">{{p.title}}</span>
+<span style="font-size: 13px; line-height: 1.5; color: #3E5068">{{p.desc}}</span>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 10px; font-size: 12px">
+<span style="color: #5A6B82">Impacto</span><span style="font-weight: 600">{{p.impacto}}</span>
+<span style="color: #5A6B82">Esforço</span><span style="font-weight: 600">{{p.esforco}}</span>
+<span style="color: #5A6B82">Risco</span><span style="font-weight: 600">{{p.risco}}</span>
+<span style="color: #5A6B82">Prazo</span><span style="font-weight: 600">{{p.prazo}}</span>
+</div>
+<span style="font-size: 11px; color: #5A6B82; line-height: 1.4; border-top: 1px solid #EDF1F6; padding-top: 8px">Fonte: {{p.fonte}}</span>
+<sc-if value="{{p.isChosen}}" hint-placeholder-val="{{ false }}">
+<button class="dbtn" type="button" aria-pressed="true" style="margin-top: auto; text-align: center; background: #1EA9A1; color: #0B1A2E; font-weight: 800; font-size: 13px; padding: 11px; border-radius: 9px; min-height: 44px">✓ Caminho escolhido</button>
+</sc-if>
+<sc-if value="{{p.notChosen}}" hint-placeholder-val="{{ true }}">
+<button class="dbtn" type="button" aria-pressed="false" onClick="{{p.pick}}" style="margin-top: auto; text-align: center; background: #1D304E; color: #FFFFFF; font-weight: 700; font-size: 13px; padding: 11px; border-radius: 9px; min-height: 44px">Escolher este caminho</button>
+</sc-if>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{hasChosen}}" hint-placeholder-val="{{ false }}">
+<div style="background: #F0FAF9; border: 1px solid #BFE6E3; border-radius: 14px; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap">
+<div style="display: flex; flex-direction: column; gap: 3px">
+<span style="font-size: 14px; font-weight: 700">Decisão registrada · caminho {{chosenId}}</span>
+<span style="font-size: 13px; color: #3E5068">{{chosenAction}}. O resultado será medido em 30 dias e volta como aprendizado.</span>
+</div>
+<button class="dbtn" type="button" onClick="{{reset}}" style="background: transparent; color: #0E6B66; font-weight: 700; font-size: 13px; padding: 10px 12px; border-radius: 8px; min-height: 40px; border: 1px solid #9ED8D3">Rever caminhos</button>
+</div>
+</sc-if>
+<sc-if value="{{noChosen}}" hint-placeholder-val="{{ true }}">
+<span style="font-size: 13px; color: #5A6B82">{{d.note}}</span>
+</sc-if>
+</div>
+</sc-if>
+
+</div>
+</main>
+</div>
+</template>
+<script>
+/* Mini runtime: renders the demo template (sc-if, sc-for, {{holes}}, onClick) */
+(function(){
+  function get(ctx, path){
+    path = path.trim();
+    if (path === 'true') return true; if (path === 'false') return false;
+    if (/^-?\d+(\.\d+)?$/.test(path)) return parseFloat(path);
+    return path.split('.').reduce(function(o,k){ return o == null ? undefined : o[k]; }, ctx);
+  }
+  function interp(str, ctx){ return str.replace(/\{\{([^}]+)\}\}/g, function(_, p){ var v = get(ctx, p); return v == null ? '' : v; }); }
+  function whole(str){ var m = str.match(/^\s*\{\{([^}]+)\}\}\s*$/); return m ? m[1] : null; }
+  function proc(node, ctx){
+    if (node.nodeType === 3){ if (node.nodeValue.indexOf('{{') >= 0) node.nodeValue = interp(node.nodeValue, ctx); return [node]; }
+    if (node.nodeType !== 1) return [node];
+    var tag = node.tagName.toLowerCase();
+    if (tag === 'sc-if'){
+      if (!get(ctx, whole(node.getAttribute('value')))) return [];
+      return procKids(node, ctx);
+    }
+    if (tag === 'sc-for'){
+      var list = get(ctx, whole(node.getAttribute('list'))) || [], as = node.getAttribute('as'), out = [];
+      list.forEach(function(item, i){
+        var c = Object.create(ctx); c[as] = item; c.$index = i;
+        var clone = node.cloneNode(true);
+        out = out.concat(procKids(clone, c));
+      });
+      return out;
+    }
+    Array.prototype.slice.call(node.attributes).forEach(function(a){
+      if (a.value.indexOf('{{') < 0 || /^hint-/.test(a.name)) { if (/^hint-/.test(a.name)) node.removeAttribute(a.name); return; }
+      if (/^on/i.test(a.name)){
+        var fn = get(ctx, whole(a.value)); node.removeAttribute(a.name);
+        var ev = a.name.slice(2).toLowerCase(); if (ev === 'change') ev = 'input';
+        if (typeof fn === 'function') node.addEventListener(ev, fn);
+        return;
+      }
+      node.setAttribute(a.name, interp(a.value, ctx));
+    });
+    var kids = Array.prototype.slice.call(node.childNodes);
+    kids.forEach(function(k){
+      var res = proc(k, ctx);
+      if (res.length === 1 && res[0] === k) return;
+      res.forEach(function(r){ node.insertBefore(r, k); });
+      node.removeChild(k);
+    });
+    return [node];
+  }
+  function procKids(node, ctx){
+    var out = [];
+    Array.prototype.slice.call(node.childNodes).forEach(function(k){ out = out.concat(proc(k, ctx)); });
+    return out;
+  }
+  window.DCLogic = function(props){ this.props = props || {}; this.state = {}; };
+  window.DCLogic.prototype.setState = function(p){ Object.assign(this.state, typeof p === 'function' ? p(this.state) : p); if (this._render) this._render(); };
+  window.mountDC = function(Comp, tplId, rootId, props){
+    var inst = new Comp(props || {}), root = document.getElementById(rootId), tpl = document.getElementById(tplId);
+    inst._render = function(){
+      var frag = tpl.content.cloneNode(true), ctx = inst.renderVals(), wrap = document.createElement('div');
+      wrap.appendChild(frag); var nodes = procKids(wrap, ctx);
+      root.innerHTML = ''; nodes.forEach(function(n){ root.appendChild(n); });
+    };
+    inst._render(); return inst;
+  };
+})();
+</script>
+<script>
+
+class DemoComponent extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { product: null, screen: 'painel', chosen: {} };
+  }
+  data() {
+    const estetica = {
+      biz: 'Clínica Modelo Estética', period: 'Semana 10–16 nov', initials: 'CE', agentName: 'Assistente da Dra.',
+      kpis: [
+        { label: 'Resolvidas pela IA', value: '68%', delta: '16 de 23 leads sem a equipe', good: true },
+        { label: '1ª resposta (média)', value: '41s', delta: 'antes da IA: 3h40', good: true },
+        { label: 'Avaliações na semana', value: '18', delta: '6 confirmadas hoje', good: true },
+        { label: 'Comparecimento', value: '64%', delta: '▼ era 78% há 3 semanas', good: false }
+      ],
+      alerts: [
+        { high: true, title: 'Comparecimento caiu 14 p.p. em 3 semanas', detail: '9 das 14 faltas foram em horários de segunda de manhã.' },
+        { high: true, title: 'Custo por avaliação subiu 38% na campanha de harmonização', detail: 'Os cliques dobraram, as avaliações realizadas não.' },
+        { high: false, title: '31 leads de outubro ainda sem reativação', detail: 'Leads de 30 a 60 dias têm a melhor taxa de retorno.' }
+      ],
+      chartTitle: 'Comparecimento às avaliações, por semana',
+      bars: [{ v: 78, label: 'S1' }, { v: 75, label: 'S2' }, { v: 69, label: 'S3' }, { v: 64, label: 'S4' }],
+      teaser: 'As faltas viraram o maior vazamento do funil. 3 prioridades para recuperar a agenda.',
+      inboxCount: '23 novos',
+      inbox: [
+        { name: 'Juliana Ribeiro', topic: 'Bioestimulador de colágeno', status: 'IA qualificando', time: 'agora', active: true },
+        { name: 'Mariana Santos', topic: 'Avaliação · quinta 15h', status: 'Agendada', time: '9:40' },
+        { name: 'Fernanda Costa', topic: 'Pediu valores', status: 'Com a equipe', time: '9:12' },
+        { name: 'Aline Teixeira', topic: 'Retorno pós-procedimento', status: 'Pós-venda', time: '8:31' },
+        { name: 'Renata Dias', topic: 'Limpeza de pele', status: 'Tratamento fechado', time: 'ontem' }
+      ],
+      chatName: 'Juliana Ribeiro', chatSub: 'Origem: campanha Bioestimulador · Instagram',
+      chat: [
+        { ia: false, text: 'Oi! Vi o anúncio do bioestimulador. Quanto custa?', time: '10:12' },
+        { ia: true, text: 'Oi, Juliana! Que bom ter você aqui. O valor depende do protocolo indicado para a sua pele, por isso ele é definido na avaliação, que é personalizada. Posso fazer duas perguntas rápidas para entender o que você busca?', time: '10:12' },
+        { ia: false, text: 'Pode sim. Queria melhorar a flacidez no rosto.', time: '10:14' },
+        { ia: true, text: 'Entendi. A avaliação com a Dra. dura cerca de 40 minutos e você já sai com o plano de tratamento. Tenho quinta às 15h ou sábado às 10h. Qual fica melhor?', time: '10:14' },
+        { ia: false, text: 'Quinta às 15h.', time: '10:15' }
+      ],
+      insights: [
+        { label: 'Intenção', text: 'Alta: objetivo claro e aceitou horário' },
+        { label: 'Interesse', text: 'Flacidez facial · bioestimulador' },
+        { label: 'Próxima ação', text: 'Confirmação 24h antes e lembrete 2h antes' },
+        { label: 'Atenção', text: 'Leads desta campanha faltam 30% mais: reforçar confirmação' }
+      ],
+      chatStage: 'Avaliação agendada', chatValue: 'Quinta, 15h · Dra. Responsável',
+      funnelStats: [{ v: '58', l: 'pacientes no funil' }, { v: '7', l: 'tratamentos fechados' }, { v: 'R$ 24,3 mil', l: 'faturados na semana' }],
+      stages: [
+        { name: 'Novo lead', total: '23 hoje', cards: [
+          { name: 'Juliana Ribeiro', meta: 'Bioestimulador', next: 'IA · qualificando' },
+          { name: 'Paula Mendes', meta: 'Harmonização', next: 'IA · aguardando resposta' }] },
+        { name: 'Qualificado', total: '15', cards: [
+          { name: 'Fernanda Costa', meta: 'Preenchimento labial', next: 'Equipe · enviar horários', warn: 'Pediu valores 2x' },
+          { name: 'Carla Nunes', meta: 'Limpeza de pele', next: 'IA · oferecer avaliação' }] },
+        { name: 'Avaliação agendada', total: '18 na semana', cards: [
+          { name: 'Mariana Santos', meta: 'Quinta, 15h', next: 'Confirmar 24h antes' },
+          { name: 'Beatriz Lopes', meta: 'Segunda, 9h', next: 'Confirmar hoje', warn: 'Risco de falta' }] },
+        { name: 'Compareceu', total: '11', cards: [
+          { name: 'Sônia Prado', meta: 'Plano R$ 3.800', next: 'Retorno em 48h' },
+          { name: 'Lívia Torres', meta: 'Plano R$ 2.400', next: 'Follow-up da Dra.' }] },
+        { name: 'Tratamento fechado', total: '7 · R$ 24,3 mil', cards: [
+          { name: 'Aline Teixeira', meta: 'R$ 4.200', next: 'Retorno em 30 dias' },
+          { name: 'Renata Dias', meta: 'R$ 1.900', next: 'Sessão 1 de 4' }] }
+      ],
+      teamGoal: 'R$ 24,3 mil de R$ 32 mil', teamPct: 76, teamNote: 'Faltam 14 dias · ritmo atual fecha o mês em 104% da meta',
+      split: [{ l: 'Resolvidas pela IA', v: '68%' }, { l: 'Passadas para a equipe', v: '32%' }, { l: 'Avaliações agendadas pela IA', v: '41' }],
+      weeklyLabel: 'Faturamento semanal · R$ mil',
+      weekly: [{ label: 'S1', team: 4.2, ia: 1.1 }, { label: 'S2', team: 4.6, ia: 1.5 }, { label: 'S3', team: 5.0, ia: 2.2 }, { label: 'S4', team: 5.1, ia: 2.6 }],
+      teamCols: ['Pessoa', 'Faturado', 'Meta', 'Fechamento', '1ª resposta'],
+      team: [
+        { name: 'Dra. Responsável', role: 'Avaliações', vendas: 'R$ 15,1 mil', meta: 88, conv: '64%', resp: '—' },
+        { name: 'Luana', role: 'Consultora', vendas: 'R$ 6,2 mil', meta: 71, conv: '42%', resp: '14 min' },
+        { name: 'Paula', role: 'Recepção', vendas: 'R$ 3,0 mil', meta: 46, conv: '31%', resp: '3 h', alert: 'Retorno lento nos leads da campanha' },
+        { name: 'Assistente IA', role: 'Agente', vendas: '41 avaliações', meta: 0, conv: '58%', resp: '41 s', ai: true }
+      ],
+      what: 'O comparecimento às avaliações caiu de 78% para 64% em 3 semanas. São cerca de 5 avaliações perdidas por semana: hoje é o maior vazamento do seu funil.',
+      why: [
+        { t: '9 das 14 faltas foram em horários de segunda de manhã, agendados com mais de 5 dias de antecedência.' },
+        { t: 'Leads da campanha de bioestimulador faltam 30% mais que pacientes vindos de indicação.' },
+        { t: 'Confirmar 24h e 2h antes é a prática mais consistente para reduzir faltas em agendas de saúde (literatura de gestão de agenda).' }
+      ],
+      priorities: [
+        { n: '1', title: 'Ativar confirmação em duas etapas: 24h e 2h antes da avaliação', impacto: 'alto', esforco: 'baixo', prazo: 'Hoje' },
+        { n: '2', title: 'Limitar agendamentos de segunda a no máximo 3 dias de antecedência', impacto: 'médio', esforco: 'baixo', prazo: 'Esta semana' },
+        { n: '3', title: 'Criar lista de espera para preencher horários liberados', impacto: 'médio', esforco: 'médio', prazo: '15 dias' }
+      ],
+      medir: 'Taxa de comparecimento semanal. Meta sugerida: 75% em 30 dias.',
+      fontes: 'Seus dados (agenda e origem do lead) · literatura de gestão de agenda em saúde · método Raise',
+      question: 'Vale a pena aumentar o investimento na campanha de harmonização?',
+      answer: 'Ainda não. A campanha de harmonização dobrou os cliques, mas o custo por avaliação realizada subiu 38%. Aumentar a verba agora tende a comprar mais leads que não chegam à cadeira. Você tem três caminhos:',
+      paths: [
+        { id: 'A', title: 'Corrigir antes de escalar', desc: 'Manter a verba por 3 semanas e ajustar criativo e qualificação da IA para filtrar curiosos.', impacto: '-20 a -30% no custo', esforco: 'Baixo', risco: 'Baixo', prazo: '3 semanas', fonte: 'seus dados de campanha e funil', confianca: 'alta', action: 'Tarefa criada: revisar criativos e regra de qualificação da IA' },
+        { id: 'B', title: 'Realocar para o bioestimulador', desc: 'Mover 30% da verba para a campanha com melhor custo por tratamento fechado.', impacto: 'Mais tratamentos, mesma verba', esforco: 'Baixo', risco: 'Médio', prazo: '30 dias', fonte: 'seus dados + sazonalidade de buscas', confianca: 'média', action: 'Ajuste de verba registrado: 30% para a campanha de bioestimulador' },
+        { id: 'C', title: 'Escalar com teto de custo', desc: 'Aumentar a verba em 20% com alerta e pausa se o custo por avaliação passar do limite.', impacto: 'Até +4 avaliações/sem.', esforco: 'Médio', risco: 'Alto', prazo: '2 semanas', fonte: 'benchmark de mídia para clínicas (base ainda pequena)', confianca: 'baixa', action: 'Regra criada: teto de custo por avaliação com alerta' }
+      ],
+      note: 'O Conselheiro indica o caminho A antes de qualquer aumento de verba. A decisão é sua.'
+    };
+    const odonto = {
+      biz: 'Odonto Modelo', period: 'Semana 10–16 nov', initials: 'OM', agentName: 'Assistente da clínica',
+      kpis: [
+        { label: 'Resolvidas pela IA', value: '70%', delta: '19 de 27 conversas sem a recepção', good: true },
+        { label: '1ª resposta (média)', value: '35s', delta: 'antes da IA: 2h50', good: true },
+        { label: 'Planos de tratamento abertos', value: 'R$ 86,4 mil', delta: '31 planos apresentados', good: true },
+        { label: 'Aprovação de orçamento', value: '38%', delta: '▼ era 47% há 4 semanas', good: false }
+      ],
+      alerts: [
+        { high: true, title: 'Aprovação de orçamento caiu 9 p.p. em 4 semanas', detail: '14 planos acima de R$ 5 mil estão sem retorno há mais de 7 dias.' },
+        { high: true, title: '212 pacientes com limpeza vencida há mais de 6 meses', detail: 'O recall de manutenção não foi feito este ano.' },
+        { high: false, title: 'Implantes: 6 avaliações e 1 fechamento no mês', detail: 'Objeção mais registrada: forma de pagamento.' }
+      ],
+      chartTitle: 'Aprovação de orçamentos, por semana',
+      bars: [{ v: 47, label: 'S1' }, { v: 45, label: 'S2' }, { v: 41, label: 'S3' }, { v: 38, label: 'S4' }],
+      teaser: 'Os planos de tratamento estão parando no orçamento. 3 prioridades para destravar.',
+      inboxCount: '27 hoje',
+      inbox: [
+        { name: 'Carlos Henrique', topic: 'Dor de dente desde ontem', status: 'IA: encaixe hoje', time: 'agora', active: true },
+        { name: 'Patrícia Gomes', topic: 'Avaliação de implante', status: 'Agendada', time: '9:48' },
+        { name: 'Roberto Lima', topic: 'Orçamento de lentes', status: 'Com a CRC', time: '9:20' },
+        { name: 'Sandra Melo', topic: 'Limpeza semestral', status: 'Recall', time: '8:55' },
+        { name: 'Fábio Costa', topic: 'Clareamento', status: 'Em tratamento', time: 'ontem' }
+      ],
+      chatName: 'Carlos Henrique', chatSub: 'Paciente desde 2023 · última limpeza há 14 meses',
+      chat: [
+        { ia: false, text: 'Boa tarde, estou com dor num dente desde ontem. Tem horário hoje?', time: '14:02' },
+        { ia: true, text: 'Boa tarde, Carlos! Sinto muito pela dor, vou te ajudar a ser atendido o quanto antes. A dor é constante ou aparece quando você toma algo gelado ou quente?', time: '14:02' },
+        { ia: false, text: 'Constante, e piora à noite.', time: '14:04' },
+        { ia: true, text: 'Entendi. Tenho um encaixe hoje às 17h40 com o Dr. Rafael para avaliar. Posso confirmar? Se a dor aumentar muito antes disso, me avise aqui.', time: '14:04' },
+        { ia: false, text: 'Pode confirmar, obrigado!', time: '14:05' }
+      ],
+      insights: [
+        { label: 'Intenção', text: 'Alta: dor ativa, aceitou o encaixe' },
+        { label: 'Classificação', text: 'Urgência · a IA não faz diagnóstico' },
+        { label: 'Próxima ação', text: 'Lembrete 1h antes e ficha pré-preenchida' },
+        { label: 'Oportunidade', text: 'Limpeza vencida há 14 meses: oferecer manutenção após o atendimento' }
+      ],
+      chatStage: 'Consulta agendada', chatValue: 'Hoje, 17h40 · Dr. Rafael',
+      funnelStats: [{ v: '64', l: 'pacientes no funil' }, { v: 'R$ 86,4 mil', l: 'em planos de tratamento' }, { v: '12', l: 'tratamentos aprovados no mês' }],
+      stages: [
+        { name: 'Novo contato', total: '27 hoje', cards: [
+          { name: 'Carlos Henrique', meta: 'Urgência · dor', next: 'IA · encaixe hoje' },
+          { name: 'Juliana Prado', meta: 'Ortodontia', next: 'IA · qualificando' }] },
+        { name: 'Avaliação agendada', total: '19 na semana', cards: [
+          { name: 'Patrícia Gomes', meta: 'Implante · qui 10h', next: 'Confirmar 24h antes' },
+          { name: 'Marcos Vieira', meta: 'Lentes · seg 9h', next: 'Confirmar hoje', warn: 'Risco de falta' }] },
+        { name: 'Orçamento apresentado', total: '31 · R$ 86,4 mil', cards: [
+          { name: 'Roberto Lima', meta: 'Lentes · R$ 18.900', next: 'CRC · retorno hoje', warn: 'Sem retorno há 9 dias' },
+          { name: 'Elaine Duarte', meta: 'Implante · R$ 7.200', next: 'Follow-up automático' }] },
+        { name: 'Em tratamento', total: '48', cards: [
+          { name: 'Fábio Costa', meta: 'Clareamento · sessão 2 de 3', next: 'Próxima: sex 14h' },
+          { name: 'Tânia Rocha', meta: 'Ortodontia · mês 8', next: 'Manutenção mensal' }] },
+        { name: 'Recall e retorno', total: '212 vencidos', cards: [
+          { name: 'Sandra Melo', meta: 'Limpeza vencida há 7 meses', next: 'Campanha de recall' },
+          { name: 'José Alves', meta: 'Revisão de implante', next: 'Lembrete enviado' }] }
+      ],
+      teamGoal: 'R$ 58,2 mil de R$ 80 mil', teamPct: 73, teamNote: 'Faltam 14 dias · ritmo atual fecha o mês em 97% da meta',
+      split: [{ l: 'Resolvidas pela IA', v: '70%' }, { l: 'Passadas para a recepção', v: '30%' }, { l: 'Consultas agendadas pela IA', v: '46' }],
+      weeklyLabel: 'Tratamentos aprovados por semana · R$ mil',
+      weekly: [{ label: 'S1', team: 11.2, ia: 2.1 }, { label: 'S2', team: 12.0, ia: 2.8 }, { label: 'S3', team: 12.4, ia: 3.5 }, { label: 'S4', team: 13.1, ia: 4.2 }],
+      teamCols: ['Pessoa', 'Aprovado', 'Meta', 'Aprovação', '1ª resposta'],
+      team: [
+        { name: 'Dr. Rafael', role: 'Implantodontia', vendas: 'R$ 24,1 mil', meta: 82, conv: '41%', resp: '—' },
+        { name: 'Dra. Lívia', role: 'Ortodontia', vendas: 'R$ 16,8 mil', meta: 77, conv: '52%', resp: '—' },
+        { name: 'Bruna', role: 'CRC', vendas: 'R$ 13,4 mil', meta: 48, conv: '29%', resp: '9 dias', alert: '14 planos sem retorno' },
+        { name: 'Assistente IA', role: 'Agente', vendas: '46 consultas', meta: 0, conv: '61%', resp: '35 s', ai: true }
+      ],
+      what: 'A aprovação de orçamentos caiu de 47% para 38% em 4 semanas. Os planos acima de R$ 5 mil concentram a queda: 14 estão parados há mais de 7 dias.',
+      why: [
+        { t: 'O tempo entre a apresentação do plano e o primeiro retorno subiu de 2 para 9 dias.' },
+        { t: 'Forma de pagamento é a objeção mais registrada (8 de 14), e a clínica oferece até 6x.' },
+        { t: 'Retomar o plano em até 48h, com opções de pagamento claras, é prática recorrente nas clínicas que mais aprovam (literatura de gestão odontológica).' }
+      ],
+      priorities: [
+        { n: '1', title: 'Retorno do plano de tratamento em 48h, com resumo do que foi explicado na cadeira', impacto: 'alto', esforco: 'baixo', prazo: 'Hoje' },
+        { n: '2', title: 'Testar condição de pagamento estendida em planos acima de R$ 5 mil', impacto: 'alto', esforco: 'médio', prazo: 'Esta semana' },
+        { n: '3', title: 'Disparar o recall para os 212 pacientes com limpeza vencida', impacto: 'médio', esforco: 'baixo', prazo: 'Até sexta' }
+      ],
+      medir: 'Taxa de aprovação de orçamento em 30 dias. Meta sugerida: voltar a 45%.',
+      fontes: 'Seus dados (planos, motivos de perda e agenda) · literatura de gestão odontológica · método Raise',
+      question: 'Por que meus orçamentos de implante não estão fechando?',
+      answer: 'Implantes tiveram 6 avaliações e 1 fechamento no mês. A procura existe; a perda acontece depois da avaliação, quando o paciente leva o plano para casa e não recebe um retorno estruturado. Você tem três caminhos:',
+      paths: [
+        { id: 'A', title: 'Retorno estruturado em 48h', desc: 'A CRC liga em até 48h e a IA envia o resumo do plano e tira dúvidas no WhatsApp.', impacto: '+2 a 3 fechamentos/mês', esforco: 'Baixo', risco: 'Baixo', prazo: '30 dias', fonte: 'seus dados de follow-up', confianca: 'alta', action: 'Regra criada: retorno em 48h para todo plano de implante' },
+        { id: 'B', title: 'Opções de pagamento no plano', desc: 'Apresentar duas formas de pagamento já no orçamento entregue e no WhatsApp.', impacto: 'Reduz a principal objeção', esforco: 'Médio', risco: 'Margem', prazo: '3 semanas', fonte: 'motivos de perda registrados', confianca: 'média', action: 'Tarefa criada: revisar condições com o financeiro' },
+        { id: 'C', title: 'Conteúdo antes da avaliação', desc: 'Enviar explicações do procedimento antes da consulta para o paciente chegar mais seguro.', impacto: 'Incerto', esforco: 'Médio', risco: 'Baixo', prazo: '60 dias', fonte: 'base ainda pequena de dados', confianca: 'baixa', action: 'Sequência criada: conteúdo pré-avaliação de implante' }
+      ],
+      note: 'O Conselheiro indica começar por A e testar B em paralelo. A decisão é sua.'
+    };
+    const medica = {
+      biz: 'Clínica Médica Modelo', period: 'Semana 10–16 nov', initials: 'CM', agentName: 'Assistente da clínica',
+      kpis: [
+        { label: 'Resolvidas pela IA', value: '74%', delta: '41 de 55 conversas sem a recepção', good: true },
+        { label: '1ª resposta (média)', value: '29s', delta: 'antes da IA: 1h50', good: true },
+        { label: 'Consultas na semana', value: '212', delta: '38 retornos agendados', good: true },
+        { label: 'Faltas', value: '17%', delta: '▲ eram 9% há 4 semanas', good: false }
+      ],
+      alerts: [
+        { high: true, title: 'Faltas subiram para 17% em 4 semanas', detail: 'Concentradas em primeiras consultas de dermatologia às segundas.' },
+        { high: true, title: '63 pacientes sem retorno agendado após exame', detail: 'Pedidos de retorno feitos há mais de 30 dias.' },
+        { high: false, title: 'Consultas particulares caíram 12%', detail: 'Pedidos de valor fora do horário ficavam sem resposta até o dia seguinte.' }
+      ],
+      chartTitle: 'Comparecimento às consultas, por semana',
+      bars: [{ v: 91, label: 'S1' }, { v: 88, label: 'S2' }, { v: 85, label: 'S3' }, { v: 83, label: 'S4' }],
+      teaser: 'As faltas dobraram nas primeiras consultas. 3 prioridades para proteger a agenda.',
+      inboxCount: '55 hoje',
+      inbox: [
+        { name: 'Mariana Couto', topic: 'Consulta de dermatologia', status: 'IA agendando', time: 'agora', active: true },
+        { name: 'Paulo Ribeiro', topic: 'Resultado de exame', status: 'Retorno agendado', time: '9:51' },
+        { name: 'Helena Dias', topic: 'Convênio aceito?', status: 'Respondido pela IA', time: '9:30' },
+        { name: 'Antônio Neves', topic: 'Remarcar consulta', status: 'Com a recepção', time: '9:02' },
+        { name: 'Luciana Faria', topic: 'Check-up anual', status: 'Consulta realizada', time: 'ontem' }
+      ],
+      chatName: 'Mariana Couto', chatSub: 'Nova paciente · convênio Unimed',
+      chat: [
+        { ia: false, text: 'Oi, queria marcar dermatologista. Vocês atendem Unimed?', time: '11:20' },
+        { ia: true, text: 'Oi, Mariana! Atendemos Unimed nas consultas de dermatologia, sim. Para eu achar o melhor horário: é a primeira consulta com a Dra. Beatriz ou um retorno?', time: '11:20' },
+        { ia: false, text: 'Primeira. Pode ser de manhã?', time: '11:22' },
+        { ia: true, text: 'Tenho quarta às 8h30 ou sexta às 10h. Envio a confirmação um dia antes, com as orientações para a consulta. Qual prefere?', time: '11:22' },
+        { ia: false, text: 'Quarta às 8h30.', time: '11:23' }
+      ],
+      insights: [
+        { label: 'Intenção', text: 'Alta: convênio aceito e horário escolhido' },
+        { label: 'Tipo', text: 'Primeira consulta · dermatologia · Unimed' },
+        { label: 'Próxima ação', text: 'Confirmação 24h antes e pedido da carteirinha' },
+        { label: 'Atenção', text: 'Primeiras consultas faltam 2x mais: confirmação dupla' }
+      ],
+      chatStage: 'Consulta agendada', chatValue: 'Quarta, 8h30 · Dra. Beatriz',
+      funnelStats: [{ v: '212', l: 'consultas na semana' }, { v: '63', l: 'retornos pendentes' }, { v: '17%', l: 'de faltas' }],
+      stages: [
+        { name: 'Novo contato', total: '55 hoje', cards: [
+          { name: 'Mariana Couto', meta: 'Dermatologia · Unimed', next: 'IA · agendando' },
+          { name: 'Ricardo Alves', meta: 'Cardiologia · particular', next: 'IA · enviando horários' }] },
+        { name: 'Consulta agendada', total: '212 na semana', cards: [
+          { name: 'Helena Dias', meta: 'Ginecologia · ter 14h', next: 'Confirmar 24h antes' },
+          { name: 'Sérgio Lopes', meta: 'Dermatologia · seg 8h', next: 'Confirmar hoje', warn: '1ª consulta · risco de falta' }] },
+        { name: 'Consulta realizada', total: '168', cards: [
+          { name: 'Luciana Faria', meta: 'Check-up · exames pedidos', next: 'Retorno em 30 dias' },
+          { name: 'Paulo Ribeiro', meta: 'Cardiologia · exames prontos', next: 'Agendar retorno' }] },
+        { name: 'Retorno e exames', total: '63 pendentes', cards: [
+          { name: 'Cláudia Prates', meta: 'Retorno pendente há 40 dias', next: 'IA · oferecer horário', warn: 'Sem retorno' },
+          { name: 'Jorge Matos', meta: 'Resultado de holter', next: 'Retorno qui 16h' }] },
+        { name: 'Acompanhamento', total: '1.240 ativos', cards: [
+          { name: 'Beatriz Nunes', meta: 'Acompanhamento trimestral', next: 'Próxima em janeiro' },
+          { name: 'Antônio Neves', meta: 'Check-up anual', next: 'Lembrete em 2027' }] }
+      ],
+      teamGoal: '212 de 260 consultas na semana', teamPct: 82, teamNote: 'Ocupação da agenda · meta de 260 consultas',
+      split: [{ l: 'Resolvidas pela IA', v: '74%' }, { l: 'Passadas para a recepção', v: '26%' }, { l: 'Consultas agendadas pela IA', v: '118' }],
+      weeklyLabel: 'Consultas agendadas por semana',
+      weekly: [{ label: 'S1', team: 150, ia: 40 }, { label: 'S2', team: 140, ia: 55 }, { label: 'S3', team: 128, ia: 70 }, { label: 'S4', team: 118, ia: 94 }],
+      teamCols: ['Pessoa', 'Consultas', 'Ocupação', 'Comparecimento', '1ª resposta'],
+      team: [
+        { name: 'Dra. Beatriz', role: 'Dermatologia', vendas: '64 consultas', meta: 91, conv: '81%', resp: '—' },
+        { name: 'Dr. André', role: 'Cardiologia', vendas: '52 consultas', meta: 87, conv: '90%', resp: '—' },
+        { name: 'Recepção', role: 'Agendamento manual', vendas: '38 consultas', meta: 46, conv: '78%', resp: '1h50', alert: '63 retornos pendentes' },
+        { name: 'Assistente IA', role: 'Agente', vendas: '118 consultas', meta: 0, conv: '86%', resp: '29 s', ai: true }
+      ],
+      what: 'As faltas subiram de 9% para 17% em 4 semanas. A alta está nas primeiras consultas de dermatologia às segundas de manhã: cerca de 14 horários perdidos por semana.',
+      why: [
+        { t: 'Primeiras consultas marcadas com mais de 10 dias de antecedência faltam 2x mais que retornos.' },
+        { t: 'A confirmação é feita só na véspera, por ligação, e 4 em cada 10 pacientes não atendem.' },
+        { t: 'Confirmação por mensagem em duas etapas e lista de espera reduzem faltas de forma consistente (literatura de gestão de agenda em saúde).' }
+      ],
+      priorities: [
+        { n: '1', title: 'Confirmação automática em duas etapas: 48h e 3h antes', impacto: 'alto', esforco: 'baixo', prazo: 'Hoje' },
+        { n: '2', title: 'Lista de espera para encaixar horários liberados', impacto: 'alto', esforco: 'médio', prazo: 'Esta semana' },
+        { n: '3', title: 'Oferecer horário aos 63 pacientes com retorno pendente após exame', impacto: 'médio', esforco: 'baixo', prazo: 'Até sexta' }
+      ],
+      medir: 'Taxa de faltas semanal. Meta sugerida: voltar a 10% em 30 dias.',
+      fontes: 'Seus dados (agenda e tipo de consulta) · literatura de gestão de agenda em saúde · método Raise',
+      question: 'Vale a pena abrir horários de dermatologia aos sábados?',
+      answer: 'Talvez, mas não ainda. A procura por dermatologia cresceu 22%, só que 17% dos horários atuais se perdem em faltas. Recuperar essas faltas libera cerca de 14 consultas por semana sem abrir agenda nova. Você tem três caminhos:',
+      paths: [
+        { id: 'A', title: 'Recuperar as faltas primeiro', desc: 'Confirmação em duas etapas e lista de espera antes de mexer na escala.', impacto: '+10 a 14 consultas/sem.', esforco: 'Baixo', risco: 'Baixo', prazo: '30 dias', fonte: 'seus dados de agenda', confianca: 'alta', action: 'Regra criada: confirmação 48h e 3h antes e lista de espera' },
+        { id: 'B', title: 'Sábado quinzenal de teste', desc: 'Abrir dois sábados por mês por 60 dias e medir ocupação e particular x convênio.', impacto: 'Até +24 consultas/mês', esforco: 'Médio', risco: 'Custo de escala', prazo: '60 dias', fonte: 'seus dados + sazonalidade de buscas', confianca: 'média', action: 'Teste criado: sábado quinzenal com meta de 80% de ocupação' },
+        { id: 'C', title: 'Sábado só para particulares', desc: 'Reservar o sábado para consultas particulares, de valor maior.', impacto: 'Incerto', esforco: 'Baixo', risco: 'Relação com convênios', prazo: '60 dias', fonte: 'base ainda pequena de dados', confianca: 'baixa', action: 'Regra criada: sábado reservado para particulares' }
+      ],
+      note: 'O Conselheiro indica o caminho A antes de ampliar a agenda. A decisão é sua.'
+    };
+    return { estetica, odonto, medica };
+  }
+
+  renderVals() {
+    const product = this.state.product || this.props.startSpec || 'estetica';
+    const screen = this.state.screen;
+    const d = this.data()[product];
+    const go = (s) => () => this.setState({ screen: s });
+    const navDef = [
+      { id: 'painel', label: 'Painel' },
+      { id: 'conversas', label: 'Conversas' },
+      { id: 'funil', label: 'Funil' },
+      { id: 'equipe', label: 'Equipe e metas' },
+      { id: 'leitura', label: 'Leitura da semana', isAi: true },
+      { id: 'conselheiro', label: 'Conselheiro', isAi: true }
+    ];
+    const nav = navDef.map((n) => ({ ...n, active: n.id === screen, inactive: n.id !== screen, go: go(n.id) }));
+    const titles = { painel: 'Painel do dia', conversas: 'Conversas', funil: 'Funil de vendas', equipe: 'Equipe e metas', leitura: 'Leitura da semana', conselheiro: 'Pergunte ao Conselheiro' };
+    const chosenId = (this.state.chosen || {})[product] || null;
+    const max = Math.max(...d.bars.map((b) => b.v));
+    const min = Math.min(...d.bars.map((b) => b.v));
+    const bars = d.bars.map((b, i) => ({ ...b, h: Math.round(30 + (b.v - min) / Math.max(1, max - min) * 50), color: i === d.bars.length - 1 ? '#B42318' : '#6272AE' }));
+    const kpis = d.kpis.map((k) => ({ ...k, bad: !k.good }));
+    const alerts = d.alerts.map((a) => ({ ...a, mid: !a.high }));
+    const inbox = d.inbox.map((c) => ({ ...c, active: !!c.active, inactive: !c.active }));
+    const chat = d.chat.map((m) => ({ ...m, lead: !m.ia }));
+    const wmax = Math.max(...d.weekly.map((w) => w.team + w.ia));
+    const weekly = d.weekly.map((w) => ({ ...w, total: ((w.team + w.ia) % 1 === 0 ? String(w.team + w.ia) : (w.team + w.ia).toFixed(1).replace('.', ',')), teamH: Math.round(w.team / wmax * 150), iaH: Math.round(w.ia / wmax * 150) }));
+    const team = d.team.map((t) => ({ ...t, hasMeta: t.meta > 0, noMeta: !(t.meta > 0), alertOn: !!t.alert, barColor: t.meta && t.meta < 50 ? '#B42318' : '#1D304E' }));
+    const paths = d.paths.map((p) => ({
+      ...p,
+      isChosen: p.id === chosenId,
+      notChosen: p.id !== chosenId,
+      pick: () => this.setState({ chosen: { ...(this.state.chosen || {}), [product]: p.id } })
+    }));
+    const chosen = d.paths.find((p) => p.id === chosenId);
+    return {
+      d: { ...d, kpis, alerts, bars, inbox, chat, weekly, team },
+      isEquipe: screen === 'equipe',
+      paths,
+      nav,
+      specs: [{ k: 'estetica', label: 'Estética' }, { k: 'odonto', label: 'Odontologia' }, { k: 'medica', label: 'Clínica médica' }].map((x) => ({ ...x, active: x.k === product, inactive: x.k !== product, pick: () => this.setState({ product: x.k }) })),
+      screenTitle: titles[screen],
+      isPainel: screen === 'painel',
+      isConversas: screen === 'conversas',
+      isFunil: screen === 'funil',
+      isLeitura: screen === 'leitura',
+      isConselheiro: screen === 'conselheiro',
+      goLeitura: go('leitura'),
+      goConselheiro: go('conselheiro'),
+      hasChosen: !!chosen,
+      noChosen: !chosen,
+      chosenId: chosenId || '',
+      chosenAction: chosen ? chosen.action : '',
+      reset: () => this.setState({ chosen: { ...(this.state.chosen || {}), [product]: null } })
+    };
+  }
+}
+
+
+class PageComponent extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { spec: 'estetica' };
+  }
+  renderVals() {
+    const OK = { bg: '#E3F5F4', fg: '#0E6B66' }, WAIT = { bg: '#FFF1DC', fg: '#8A4B00' }, NEW = { bg: '#EEF0F8', fg: '#3D4A7E' };
+    const slot = (t, p, what, st, tone, bar) => ({ t, p, what, st, bg: tone.bg, fg: tone.fg, bar });
+    const H = {
+      estetica: {
+        biz: 'Clínica Modelo Estética', agendaTitle: 'Agenda · quinta, 21/11', agendaKpi: '9 de 10 confirmados',
+        slots: [
+          slot('09:00', 'Renata Dias', 'Limpeza de pele · sessão 2/4', 'Confirmado', OK, '#1EA9A1'),
+          slot('10:00', 'Sônia Prado', 'Bioestimulador · aplicação', 'Confirmado', OK, '#1EA9A1'),
+          slot('11:30', 'Paula Mendes', 'Avaliação · harmonização', 'Aguardando', WAIT, '#E0A94C'),
+          slot('14:00', 'Aline Teixeira', 'Retorno pós-procedimento', 'Confirmado', OK, '#1EA9A1'),
+          slot('15:00', 'Juliana Ribeiro', 'Avaliação · bioestimulador', 'Agendado pela IA', NEW, '#6272AE'),
+          slot('16:30', 'Lista de espera', 'Horário liberado ofertado', 'Encaixe', NEW, '#6272AE')
+        ],
+        read: 'Faltas às segundas subiram. 3 caminhos para recuperar a agenda.',
+        chat: [
+          { ia: false, t: 'Oi! Vi o anúncio do bioestimulador. Como funciona?' },
+          { ia: true, t: 'Oi, Juliana! O protocolo é definido na avaliação com a Dra. Qual é o seu objetivo?' },
+          { ia: false, t: 'Melhorar a flacidez no rosto.' },
+          { ia: true, t: 'Tenho quinta às 15h ou sábado às 10h. Qual prefere?' }
+        ],
+        done: 'Avaliação agendada às 22:40 pela IA'
+      },
+      odonto: {
+        biz: 'Odonto Modelo', agendaTitle: 'Agenda · quinta, 21/11', agendaKpi: '2 encaixes de urgência',
+        slots: [
+          slot('08:00', 'Tânia Rocha', 'Manutenção ortodôntica', 'Confirmado', OK, '#1EA9A1'),
+          slot('09:00', 'Sandra Melo', 'Limpeza · recall de 6 meses', 'Confirmado', OK, '#1EA9A1'),
+          slot('10:00', 'Patrícia Gomes', 'Avaliação de implante', 'Confirmado', OK, '#1EA9A1'),
+          slot('14:00', 'Fábio Costa', 'Clareamento · sessão 2/3', 'Aguardando', WAIT, '#E0A94C'),
+          slot('16:00', 'Roberto Lima', 'Apresentação do plano · lentes', 'Retorno da CRC', NEW, '#6272AE'),
+          slot('17:40', 'Carlos Henrique', 'Urgência · dor', 'Encaixe pela IA', NEW, '#6272AE')
+        ],
+        read: 'Aprovação de orçamento caiu 9 p.p. 3 caminhos para destravar os planos.',
+        chat: [
+          { ia: false, t: 'Boa tarde, estou com dor num dente desde ontem. Tem horário hoje?' },
+          { ia: true, t: 'Sinto muito, Carlos! A dor é constante ou aparece com gelado e quente?' },
+          { ia: false, t: 'Constante, piora à noite.' },
+          { ia: true, t: 'Tenho um encaixe hoje às 17h40 com o Dr. Rafael. Posso confirmar?' }
+        ],
+        done: 'Urgência encaixada às 14:05 pela IA'
+      },
+      medica: {
+        biz: 'Clínica Médica Modelo', agendaTitle: 'Agenda · quarta, 20/11', agendaKpi: '82% de ocupação',
+        slots: [
+          slot('08:00', 'Sérgio Lopes', 'Dermatologia · 1ª consulta', 'Confirmado', OK, '#1EA9A1'),
+          slot('08:30', 'Mariana Couto', 'Dermatologia · Unimed', 'Agendado pela IA', NEW, '#6272AE'),
+          slot('09:20', 'Paulo Ribeiro', 'Cardiologia · retorno com exames', 'Confirmado', OK, '#1EA9A1'),
+          slot('10:40', 'Helena Dias', 'Ginecologia · consulta', 'Aguardando', WAIT, '#E0A94C'),
+          slot('14:00', 'Luciana Faria', 'Check-up · resultado', 'Confirmado', OK, '#1EA9A1'),
+          slot('15:20', 'Lista de espera', 'Cancelamento reaproveitado', 'Encaixe', NEW, '#6272AE')
+        ],
+        read: 'Faltas em 1ª consulta dobraram. Recupere 14 horários antes de abrir agenda nova.',
+        chat: [
+          { ia: false, t: 'Oi, queria marcar dermatologista. Vocês atendem Unimed?' },
+          { ia: true, t: 'Atendemos, sim! É a primeira consulta com a Dra. Beatriz ou um retorno?' },
+          { ia: false, t: 'Primeira. Pode ser de manhã?' },
+          { ia: true, t: 'Tenho quarta às 8h30 ou sexta às 10h. Qual prefere?' }
+        ],
+        done: 'Consulta agendada às 23:12 pela IA'
+      }
+    };
+    const spec = this.state.spec;
+    const h = H[spec];
+    const WA = '5531991474373';
+    const EMAIL = 'inteligencia.raise@gmail.com';
+    const s = this.state;
+    const base = 'Olá! Vim pelo site da Raise Clínica (Raise Tech) e quero conhecer a plataforma.';
+    const linhas = ['Olá! Vim pelo site da Raise Clínica (Raise Tech) e quero agendar uma demonstração.'];
+    if (s.nome) linhas.push('Nome: ' + s.nome);
+    if (s.empresa) linhas.push('Clínica: ' + s.empresa);
+    if (s.tel) linhas.push('WhatsApp: ' + s.tel);
+    linhas.push('Especialidade: ' + (s.segForm || 'Estética'));
+    const msg = linhas.join('\n');
+    return {
+      h: { ...h, chat: h.chat.map((m) => ({ ...m, lead: !m.ia })) },
+      specs: [{ k: 'estetica', label: 'Estética' }, { k: 'odonto', label: 'Odontologia' }, { k: 'medica', label: 'Clínica médica' }]
+        .map((x) => ({ ...x, active: x.k === spec, inactive: x.k !== spec, pick: () => this.setState({ spec: x.k }) })),
+      c: {
+        waHref: 'https://wa.me/' + WA + '?text=' + encodeURIComponent(base),
+        formWa: 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msg),
+        formMail: 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('[Site Raise Clínica] Pedido de demonstração') + '&body=' + encodeURIComponent(msg),
+        mailHref: 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('[Site Raise Clínica] Contato'),
+        setNome: (e) => this.setState({ nome: e.target.value }),
+        setEmpresa: (e) => this.setState({ empresa: e.target.value }),
+        setTel: (e) => this.setState({ tel: e.target.value }),
+        setSegForm: (e) => this.setState({ segForm: e.target.value })
+      }
+    };
+  }
+}
+
+var demoHost = document.createElement('div'); demoHost.id = 'demo-root';
+var page = mountDC(PageComponent, 'tpl-page', 'page-root', {});
+var origRender = page._render;
+page._render = function(){ origRender(); var slot = document.getElementById('demo-slot'); if (slot) slot.appendChild(demoHost); };
+page._render();
+document.body.appendChild(demoHost); mountDC(DemoComponent, 'tpl-demo', 'demo-root', { startSpec: 'estetica' }); document.getElementById('demo-slot').appendChild(demoHost);
+</script>
+<script>
+(function(){
+  var WA = '5531991474373', EMAIL = 'inteligencia.raise@gmail.com';
+  function upd(f){
+    var q = function(n){ var el = f.querySelector('[name='+n+']'); return el ? el.value.trim() : ''; };
+    var l = ['Olá! Vim pelo site da Raise Clínica (Raise Tech) e quero agendar uma demonstração.'];
+    if (q('nome')) l.push('Nome: ' + q('nome'));
+    if (q('empresa')) l.push('Clínica: ' + q('empresa'));
+    if (q('whatsapp')) l.push('WhatsApp: ' + q('whatsapp'));
+    l.push('Especialidade: ' + (q('segmento') || 'Estética'));
+    var m = l.join('\n');
+    f.querySelector('[data-role=formWa]').href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(m);
+    f.querySelector('[data-role=formMail]').href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('[Site Raise Clínica] Pedido de demonstração') + '&body=' + encodeURIComponent(m);
+  }
+  ['input','change'].forEach(function(ev){ document.addEventListener(ev, function(e){ var f = e.target.closest && e.target.closest('[data-role=leadForm]'); if (f) upd(f); }); });
+  document.addEventListener('submit', function(e){ if (e.target.matches('[data-role=leadForm]')) e.preventDefault(); });
+})();
+</script>
+</body>
+</html>
